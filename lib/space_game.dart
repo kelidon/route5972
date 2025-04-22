@@ -29,7 +29,6 @@ class SpaceGame extends Forge2DGame with KeyboardEvents {
 
   static final Vector2 mapSize = Vector2.all(500);
   static const double playZoom = 6.0;
-  late CameraComponent startCamera;
   late Map<LogicalKeyboardKey, LogicalKeyboardKey> activeKeyMap;
   late Set<LogicalKeyboardKey> pressedKeySet;
   final ships = <Ship>[];
@@ -40,87 +39,21 @@ class SpaceGame extends Forge2DGame with KeyboardEvents {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-
-    camera.removeFromParent();
-    children.register<CameraComponent>();
-
-    add(SpaceGameBackground());
-
-    final zoomLevel = min(canvasSize.x / mapSize.x, canvasSize.y / mapSize.y);
-
-    startCamera =
-        CameraComponent(world: world)
-          ..viewfinder.position = mapSize / 2
-          ..viewfinder.anchor = Anchor.center
-          ..viewfinder.zoom = zoomLevel - 0.2;
-
-    add(startCamera);
-
-
-    prepareStart();
-  }
-
-  void prepareStart() {
-    startCamera.viewfinder
-      ..add(
-        ScaleEffect.to(Vector2.all(playZoom), EffectController(duration: 1.0), onComplete: start),
-      )
-      ..add(MoveEffect.to(Vector2.all(20), EffectController(duration: 1.0)));
+    start();
   }
 
   Future<void> start() async {
     isGameOver = false;
 
-    startCamera.removeFromParent();
-
-    final isHorizontal = canvasSize.x > canvasSize.y;
-    Vector2 alignedVector({required double longMultiplier, double shortMultiplier = 1.0}) {
-      return Vector2(
-        isHorizontal ? canvasSize.x * longMultiplier : canvasSize.x * shortMultiplier,
-        !isHorizontal ? canvasSize.y * longMultiplier : canvasSize.y * shortMultiplier,
-      );
-    }
-
-    final viewportSize = alignedVector(longMultiplier: 1);
-
-    RectangleComponent viewportRimGenerator() =>
-        RectangleComponent(size: viewportSize, anchor: Anchor.topLeft)
-          ..paint.color = Colors.blue
-          ..paint.strokeWidth = 2.0
-          ..paint.style = PaintingStyle.stroke;
-    final camera =
-        CameraComponent(
-            world: world,
-            viewport:
-                FixedSizeViewport(viewportSize.x, viewportSize.y)
-                  ..position = alignedVector(longMultiplier: 0.0, shortMultiplier: 0.0)
-                  ..add(viewportRimGenerator()),
-          )
-          ..viewfinder.anchor = Anchor.center
-          ..viewfinder.zoom = playZoom;
-
-    final mapCameraSize = Vector2.all(800);
-    const mapCameraZoom = 0.5;
-
-    final mapCamera =
-        CameraComponent(
-            world: world,
-            viewport: FixedSizeViewport(mapCameraSize.x, mapCameraSize.y)
-              ..position = Vector2(viewportSize.x - mapCameraSize.x * mapCameraZoom - 50, 50),
-          )
-          ..viewfinder.anchor = Anchor.topLeft
-          ..viewfinder.zoom = mapCameraZoom;
-
-    add(camera);
-
     pressedKeySet = {};
     activeKeyMap = controlKeys;
-
-    final ship = Ship(cameraComponent: camera, pressedKeys: pressedKeySet);
-
-    ships.add(ship);
+    final ship = Ship(
+      pressedKeys: pressedKeySet,
+      position: Vector2.zero(),
+    );
+    camera.viewfinder.zoom = playZoom;
+    add(SpaceGameBackground());
     world.add(ship);
-   //camera.viewport.add(mapCamera);
   }
 
   @override
@@ -133,7 +66,10 @@ class SpaceGame extends Forge2DGame with KeyboardEvents {
   }
 
   @override
-  KeyEventResult onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+  KeyEventResult onKeyEvent(
+    KeyEvent event,
+    Set<LogicalKeyboardKey> keysPressed,
+  ) {
     super.onKeyEvent(event, keysPressed);
     if (!isLoaded || isGameOver) {
       return KeyEventResult.ignored;
