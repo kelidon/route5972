@@ -90,8 +90,6 @@ class Ship extends BodyComponent<SpaceGame> {
 
   @override
   void update(double dt) {
-    cameraComponent.viewfinder.position = body.position;
-
     if (body.isAwake || pressedKeys.isNotEmpty) {
       _updateFlight(dt);
       _updateRotation(dt);

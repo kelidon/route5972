@@ -120,7 +120,7 @@ class SpaceGame extends Forge2DGame with KeyboardEvents {
 
     ships.add(ship);
     world.add(ship);
-    camera.viewport.add(mapCamera);
+   //camera.viewport.add(mapCamera);
   }
 
   @override
