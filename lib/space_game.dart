@@ -1,8 +1,4 @@
-import 'dart:math';
-
-import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
-import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
 import 'package:flame_forge2d/flame_forge2d.dart' hide Particle, World;
 import 'package:flutter/material.dart';
@@ -47,12 +43,12 @@ class SpaceGame extends Forge2DGame with KeyboardEvents {
 
     pressedKeySet = {};
     activeKeyMap = controlKeys;
-    final ship = Ship(
-      pressedKeys: pressedKeySet,
-      position: Vector2.zero(),
-    );
+    final ship = Ship(pressedKeys: pressedKeySet, cameraComponent: camera);
+
     camera.viewfinder.zoom = playZoom;
-    add(SpaceGameBackground());
+    camera.viewfinder.anchor = Anchor.center;
+
+    world.add(SpaceGameBackground());
     world.add(ship);
   }
 
@@ -66,10 +62,7 @@ class SpaceGame extends Forge2DGame with KeyboardEvents {
   }
 
   @override
-  KeyEventResult onKeyEvent(
-    KeyEvent event,
-    Set<LogicalKeyboardKey> keysPressed,
-  ) {
+  KeyEventResult onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     super.onKeyEvent(event, keysPressed);
     if (!isLoaded || isGameOver) {
       return KeyEventResult.ignored;
