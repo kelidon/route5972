@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:route5972/config/router.dart';
 import 'package:route5972/ui/main_menu/main_menu_options.dart';
 
 class MainMenuPage extends StatefulWidget {
@@ -45,7 +46,8 @@ class _MainMenuPageState extends State<MainMenuPage> {
                           const Icon(Icons.check, color: Colors.white),
                         TextButton(
                           onPressed: () {
-                            Navigator.of(context).pushNamed('/levelSelector');
+                            Navigator.of(context)
+                                .pushNamed(AppRouter.levelSelector);
                           },
                           child: Text(
                             e.name,
