@@ -1,0 +1,3 @@
+enum MainMenuOptions {
+  start,
+}
