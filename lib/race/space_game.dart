@@ -3,8 +3,8 @@ import 'package:flame/events.dart';
 import 'package:flame_forge2d/flame_forge2d.dart' hide Particle, World;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:route5972/ship.dart';
-import 'package:route5972/space_game_background.dart';
+import 'package:route5972/race/ship.dart';
+import 'package:route5972/race/space_game_background.dart';
 
 final Map<LogicalKeyboardKey, LogicalKeyboardKey> controlKeys = {
   LogicalKeyboardKey.arrowUp: LogicalKeyboardKey.arrowUp,

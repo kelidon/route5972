@@ -1,6 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart' hide Image, Gradient;
-import 'package:route5972/space_game.dart';
+import 'package:route5972/race/space_game.dart';
 
 class SpaceGameWidget extends StatelessWidget {
   const SpaceGameWidget({super.key});

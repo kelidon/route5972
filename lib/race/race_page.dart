@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:route5972/space_game_widget.dart';
+import 'package:route5972/race/space_game_widget.dart';
 
 class RacePage extends StatelessWidget {
   const RacePage({super.key});

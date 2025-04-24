@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:route5972/config/router.dart';
-import 'package:route5972/ui/main_menu/main_menu_options.dart';
+import 'package:route5972/main_menu/main_menu_options.dart';
 
 class MainMenuPage extends StatefulWidget {
   const MainMenuPage({super.key});
@@ -21,9 +21,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
       body: Stack(
         children: [
           GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 10,
-            ),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 10),
             itemBuilder: (_, _) => Placeholder(),
           ),
           BackdropFilter(
@@ -42,17 +40,13 @@ class _MainMenuPageState extends State<MainMenuPage> {
                     (e) => Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (selectedOption == e)
-                          const Icon(Icons.check, color: Colors.white),
+                        if (selectedOption == e) const Icon(Icons.check, color: Colors.white),
                         TextButton(
                           onPressed: () {
-                            Navigator.of(context)
-                                .pushNamed(AppRouter.levelSelector);
+                            //todo показать диалоги с интро
+                            Navigator.of(context).pushNamed(AppRouter.cityMap);
                           },
-                          child: Text(
-                            e.name,
-                            style: const TextStyle(color: Colors.white),
-                          ),
+                          child: Text(e.name, style: const TextStyle(color: Colors.white)),
                         ),
                       ],
                     ),

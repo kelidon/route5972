@@ -5,7 +5,7 @@ import 'package:flame/extensions.dart';
 import 'package:flame_forge2d/flame_forge2d.dart' hide Particle, World;
 import 'package:flutter/material.dart' hide Image, Gradient;
 import 'package:flutter/services.dart';
-import 'package:route5972/space_game.dart';
+import 'package:route5972/race/space_game.dart';
 
 class Ship extends BodyComponent<SpaceGame> {
   Ship({required this.pressedKeys, required this.cameraComponent})
