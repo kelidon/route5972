@@ -7,35 +7,30 @@ import 'package:flutter/material.dart' hide Image, Gradient;
 import 'package:flutter/services.dart';
 import 'package:route5972/main_game.dart';
 
-
 class Ship extends BodyComponent<MainGame> {
   Ship({required this.pressedKeys, required this.cameraComponent})
-    : super(priority: 3, paint: Paint()..color = Colors.red);
+    : super(priority: 3, paint: Paint()..color = Colors.green);
 
-  final Set<LogicalKeyboardKey> pressedKeys;
-
-  late final Image _image;
   final size = const Size(6, 10);
   final scale = 10.0;
   final _speedDiff = 1000.0;
   final _forceDiff = 10000.0;
 
+  final vertices = <Vector2>[
+    Vector2(1.5, -4.0),
+    Vector2(1.0, 4.0),
+    Vector2(-1.0, 4.0),
+    Vector2(-1.5, -4.0),
+  ];
+
+  final Set<LogicalKeyboardKey> pressedKeys;
+  final CameraComponent cameraComponent;
+
+  late final Image _image;
+
   late final _renderPosition = -size.toOffset() / 2;
   late final _scaledRect = (size * scale).toRect();
   late final _renderRect = _renderPosition & size;
-
-  final vertices = <Vector2>[
-    Vector2(1.5, -5.0),
-    Vector2(3.0, -2.5),
-    Vector2(2.8, 0.5),
-    Vector2(1.0, 5.0),
-    Vector2(-1.0, 5.0),
-    Vector2(-2.8, 0.5),
-    Vector2(-3.0, -2.5),
-    Vector2(-1.5, -5.0),
-  ];
-
-  final CameraComponent cameraComponent;
 
   @override
   Future<void> onLoad() async {
@@ -66,23 +61,26 @@ class Ship extends BodyComponent<MainGame> {
 
   @override
   Body createBody() {
-    //player.png sprite
-    final startPosition = Vector2(20, 30) + Vector2(15, 0);
+    final startPosition = Vector2(50, 50);
 
     final def =
         BodyDef()
           ..type = BodyType.dynamic
-          ..position = startPosition;
+          ..position = startPosition
+          ..gravityOverride = Vector2.zero();
     final body =
         world.createBody(def)
           ..userData = this
-          ..angularDamping = 3.0;
+          ..angularDamping = 3.0
+          ..linearDamping = 0.2
+          ..linearVelocity = Vector2.zero()
+          ..angularVelocity = 0.0;
 
     final shape = PolygonShape()..set(vertices);
     final fixtureDef =
         FixtureDef(shape)
-          ..density = 0.2
-          ..restitution = 2.0;
+          ..density = 0.15
+          ..restitution = 0.2;
 
     body.createFixture(fixtureDef);
 
