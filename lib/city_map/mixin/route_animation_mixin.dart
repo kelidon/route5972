@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flutter/material.dart';
@@ -7,9 +9,9 @@ mixin SceneAnimationMixin on RectangleComponent {
 
   Future<void> fadeOut(VoidCallback onComplete) async {
     add(
-      RectangleComponent(
+      ColorFadeComponent(
         size: size,
-        paint: Paint()..color = Colors.black,
+        color: Colors.black.withValues(alpha: 0),
       )..add(
           OpacityEffect.fadeIn(
             EffectController(duration: duration),
@@ -20,6 +22,25 @@ mixin SceneAnimationMixin on RectangleComponent {
   }
 
   Future<void> fadeIn() async {
-    await add(OpacityEffect.fadeIn(EffectController(duration: duration)));
+    add(
+      ColorFadeComponent(
+        size: size,
+        color: Colors.black,
+      )..add(
+          OpacityEffect.fadeOut(
+            EffectController(duration: duration),
+          ),
+        ),
+    );
+  }
+}
+
+class ColorFadeComponent extends RectangleComponent {
+  ColorFadeComponent({
+    required Color color,
+    super.size,
+    super.paint,
+  }) {
+    paint.color = color;
   }
 }
