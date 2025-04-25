@@ -15,6 +15,8 @@ class CityMapGame extends FlameGame with TapDetector{
   static const String techPit = 'techPit';
   static const String terminal = 'terminal';
 
+  static const dialogOverlayIdentifier = 'dialogOverlay';
+
   @override
   Future<void> onLoad() async {
     router = RouterComponent(
@@ -28,5 +30,7 @@ class CityMapGame extends FlameGame with TapDetector{
     );
 
     add(router);
+
+    overlays.add(dialogOverlayIdentifier);
   }
 }
