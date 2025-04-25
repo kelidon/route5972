@@ -1,12 +1,18 @@
 import 'package:flame/components.dart';
 import 'package:route5972/city_map/city_map_game.dart';
+import 'package:route5972/city_map/mixin/route_animation_mixin.dart';
 import 'package:route5972/city_map/model/interactive_item.dart';
 import 'package:route5972/city_map/model/interactive_map.dart';
 
-class CityMapScene extends Component with HasGameReference<CityMapGame> {
+class CityMapScene extends RectangleComponent
+    with HasGameReference<CityMapGame>, SceneAnimationMixin {
   @override
   Future<void> onLoad() async {
-    add(
+    size = game.size;
+    position = Vector2.zero();
+    opacity = 0.0;
+
+    await add(
       InteractiveMap(
         backgroundImage: 'city_map.jpg',
         interactiveItems: [
@@ -15,11 +21,10 @@ class CityMapScene extends Component with HasGameReference<CityMapGame> {
             size: Vector2.all(48),
             name: 'The Broken Comet Bar',
             image: 'location.png',
-            onTap: () {
-              //todo переход в бар возможно с зумом
-              //тапы не проходят
-              print("bar tapped");
-              game.router.pushNamed(CityMapGame.bar);
+            onTap: () async {
+              await fadeOut(() {
+                game.router.pushNamed(CityMapGame.bar);
+              });
             },
           ),
           InteractiveItem(
@@ -43,5 +48,7 @@ class CityMapScene extends Component with HasGameReference<CityMapGame> {
         ],
       ),
     );
+
+    await fadeIn(); // Fade in when loaded
   }
 }

@@ -1,3 +1,5 @@
+import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:route5972/city_map/scene/city_map_scene.dart';
@@ -5,7 +7,7 @@ import 'package:route5972/city_map/scene/bar_scene.dart';
 import 'package:route5972/city_map/scene/tech_pit_scene.dart';
 import 'package:route5972/city_map/scene/terminal_scene.dart';
 
-class CityMapGame extends FlameGame with MultiTouchTapDetector, HasCollisionDetection {
+class CityMapGame extends FlameGame with TapDetector{
   late final RouterComponent router;
 
   static const String map = 'map';

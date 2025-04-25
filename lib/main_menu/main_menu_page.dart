@@ -22,7 +22,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
         children: [
           GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 10),
-            itemBuilder: (_, _) => Placeholder(),
+            itemBuilder: (_, __) => Placeholder(),
           ),
           BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),

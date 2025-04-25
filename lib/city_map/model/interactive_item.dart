@@ -23,7 +23,7 @@ class InteractiveItem extends SpriteComponent with TapCallbacks {
   }
 
   @override
-  void onTapDown(TapDownEvent event) {
+  void onTapCancel(TapCancelEvent event) {
     onTap?.call();
   }
 }
