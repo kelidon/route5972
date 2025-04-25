@@ -5,9 +5,10 @@ import 'package:flame/extensions.dart';
 import 'package:flame_forge2d/flame_forge2d.dart' hide Particle, World;
 import 'package:flutter/material.dart' hide Image, Gradient;
 import 'package:flutter/services.dart';
-import 'package:route5972/race/space_game.dart';
+import 'package:route5972/main_game.dart';
 
-class Ship extends BodyComponent<SpaceGame> {
+
+class Ship extends BodyComponent<MainGame> {
   Ship({required this.pressedKeys, required this.cameraComponent})
     : super(priority: 3, paint: Paint()..color = Colors.red);
 

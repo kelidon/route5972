@@ -2,16 +2,14 @@ import 'dart:ui' show Color;
 
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
-import 'package:route5972/city_map/city_map_game.dart';
 import 'package:route5972/city_map/model/interactive_item.dart';
+import 'package:route5972/main_game.dart';
 
-class InteractiveMap extends RectangleComponent
-    with HasGameReference<CityMapGame>, TapCallbacks {
+class InteractiveMap extends RectangleComponent with HasGameReference<MainGame>, TapCallbacks {
   final String backgroundImage;
   final List<InteractiveItem> interactiveItems;
 
-  InteractiveMap(
-      {required this.backgroundImage, required this.interactiveItems});
+  InteractiveMap({required this.backgroundImage, required this.interactiveItems});
 
   @override
   Future<void> onLoad() async {

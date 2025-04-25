@@ -1,10 +1,9 @@
 import 'package:flame/components.dart';
-import 'package:flame/events.dart';
-import 'package:flame_forge2d/flame_forge2d.dart' hide Particle, World;
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:route5972/city_map/mixin/route_animation_mixin.dart';
+import 'package:route5972/main_game.dart';
+import 'package:route5972/race/racing_scene_background.dart';
 import 'package:route5972/race/ship.dart';
-import 'package:route5972/race/space_game_background.dart';
 
 final Map<LogicalKeyboardKey, LogicalKeyboardKey> controlKeys = {
   LogicalKeyboardKey.arrowUp: LogicalKeyboardKey.arrowUp,
@@ -17,12 +16,8 @@ final Map<LogicalKeyboardKey, LogicalKeyboardKey> controlKeys = {
   LogicalKeyboardKey.keyD: LogicalKeyboardKey.arrowRight,
 };
 
-class SpaceGame extends Forge2DGame with KeyboardEvents {
-  SpaceGame() : super(gravity: Vector2.zero(), zoom: 1);
-
-  @override
-  Color backgroundColor() => Colors.black;
-
+class RacingScene extends RectangleComponent
+    with HasGameReference<MainGame>, KeyboardHandler, SceneAnimationMixin {
   static final Vector2 mapSize = Vector2.all(500);
   static const double playZoom = 6.0;
   late Map<LogicalKeyboardKey, LogicalKeyboardKey> activeKeyMap;
@@ -43,13 +38,13 @@ class SpaceGame extends Forge2DGame with KeyboardEvents {
 
     pressedKeySet = {};
     activeKeyMap = controlKeys;
-    final ship = Ship(pressedKeys: pressedKeySet, cameraComponent: camera);
+    final ship = Ship(pressedKeys: pressedKeySet, cameraComponent: game.camera);
 
-    camera.viewfinder.zoom = playZoom;
-    camera.viewfinder.anchor = Anchor.center;
+    game.camera.viewfinder.zoom = playZoom;
+    game.camera.viewfinder.anchor = Anchor.center;
 
-    world.add(SpaceGameBackground());
-    world.add(ship);
+    game.world.add(RacingSceneBackground());
+    game.world.add(ship);
   }
 
   @override
@@ -62,10 +57,9 @@ class SpaceGame extends Forge2DGame with KeyboardEvents {
   }
 
   @override
-  KeyEventResult onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    super.onKeyEvent(event, keysPressed);
+  bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     if (!isLoaded || isGameOver) {
-      return KeyEventResult.ignored;
+      return false;
     }
 
     _clearPressedKeys();
@@ -76,7 +70,7 @@ class SpaceGame extends Forge2DGame with KeyboardEvents {
         print('pressed ${activeKeyMap[key]}');
       }
     }
-    return KeyEventResult.handled;
+    return true;
   }
 
   void _clearPressedKeys() {

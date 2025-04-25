@@ -1,11 +1,11 @@
 import 'package:flame/components.dart';
-import 'package:route5972/city_map/city_map_game.dart';
 import 'package:route5972/city_map/mixin/route_animation_mixin.dart';
 import 'package:route5972/city_map/model/interactive_item.dart';
 import 'package:route5972/city_map/model/interactive_map.dart';
+import 'package:route5972/main_game.dart';
 
 class CityMapScene extends RectangleComponent
-    with HasGameReference<CityMapGame>, SceneAnimationMixin {
+    with HasGameReference<MainGame>, SceneAnimationMixin {
   @override
   Future<void> onLoad() async {
     size = game.size;
@@ -23,7 +23,7 @@ class CityMapScene extends RectangleComponent
             image: 'location.png',
             onTap: () async {
               await fadeOut(() {
-                game.router.pushNamed(CityMapGame.bar);
+                game.router.pushNamed(MainGame.bar);
               });
             },
           ),

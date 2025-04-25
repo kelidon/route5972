@@ -1,12 +1,11 @@
 import 'package:flame/components.dart';
-import 'package:route5972/city_map/city_map_game.dart';
 import 'package:route5972/city_map/mixin/route_animation_mixin.dart';
 import 'package:route5972/city_map/model/interactive_item.dart';
 import 'package:route5972/city_map/model/interactive_map.dart';
 import 'package:route5972/dialog/model/dialog_data.dart';
+import 'package:route5972/main_game.dart';
 
-class BarScene extends RectangleComponent
-    with HasGameReference<CityMapGame>, SceneAnimationMixin {
+class BarScene extends RectangleComponent with HasGameReference<MainGame>, SceneAnimationMixin {
   @override
   Future<void> onLoad() async {
     size = game.size;
@@ -27,14 +26,15 @@ class BarScene extends RectangleComponent
               game.showDialog(
                 DialogData(
                   leftImagePath: 'assets/images/npc.png',
-                  //backgroundImagePath: 'bar.jpg',
                   text: 'Welcome, traveler. Will you help us?',
                   options: [
                     DialogOption(
                       label: 'Yes, I will help',
                       onSelected: () {
                         game.hideDialog();
-                        // handle yes
+                        fadeOut(() {
+                          game.router.pushNamed(MainGame.race);
+                        });
                       },
                     ),
                     DialogOption(
