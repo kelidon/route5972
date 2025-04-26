@@ -1,0 +1,428 @@
+[
+  {
+    "id": "loc1-char1-1",
+    "character": "npc1",
+    "text": "Taria: You look like someone with a past. That spine’s too straight. What brings you to Hexanova-9, pilot?",
+    "items": [],
+    "responses": [
+      {
+        "text": "I'm looking for someone. Sonya.",
+        "nextNode": {
+          "type": "dialog",
+          "id": "loc1-char1-2"
+        }
+      },
+      {
+        "text": "That's none of your business.",
+        "nextNode": {
+          "type": "dialog",
+          "id": "loc1-char1-end-fail"
+        }
+      },
+      {
+        "text": "You're Taria? Heard you ruled the rings.",
+        "nextNode": {
+          "type": "dialog",
+          "id": "loc1-char1-3"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc1-char1-2",
+    "character": "npc1",
+    "text": "Taria: Sonya… You're not the first asking. But you're the first who doesn’t look like a Corp snitch. If you want me to remember—prove you still know how to handle a cockpit.",
+    "items": [
+      {
+        "id": "taria_race_access"
+      }
+    ],
+    "responses": [
+      {
+        "text": "A race?",
+        "nextNode": {
+          "type": "race",
+          "id": "loc1_race1"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc1-char1-3",
+    "character": "npc1",
+    "text": "So you’ve heard of me. Ruled the rings, huh? That’s what they’re saying now?\nAlright, racer — you’ve got my attention. Now tell me... what brings a legend-hunter like you to Voiden?\n[[I'm looking for someone. Sonya.|loc1-char1-2]]",
+    "items": [],
+    "responses": [
+      {
+        "text": "I'm looking for someone. Sonya.",
+        "nextNode": {
+          "type": "dialog",
+          "id": "loc1-char1-2"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc1-char1-after-loose",
+    "character": "npc1",
+    "text": "Taria: Sonya wouldn’t quit after a scrape like that. What about you?",
+    "items": [],
+    "responses": [
+      {
+        "text": "race again",
+        "nextNode": {
+          "type": "race",
+          "id": "loc1_race1"
+        }
+      },
+      {
+        "text": "reject",
+        "nextNode": {
+          "type": "location",
+          "id": "loc1"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc1-char1-after-win",
+    "character": "npc1",
+    "text": "Taria: Still got some fire, huh? Sonya said you'd come. Come on. I’ll show you her hangar.\nTaria: Whoever was after her — they tore this place apart.",
+    "items": [
+      {
+        "id": "taria_race_win"
+      },
+      {
+        "id": "agent_access"
+      }
+    ],
+    "responses": [
+      {
+        "text": "go back to bar",
+        "nextNode": {
+          "type": "location",
+          "id": "loc1"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc1-char1-end-fail",
+    "character": "npc1",
+    "text": "Taria scowls and walks away. This path is now blocked.",
+    "items": [
+      {
+        "id": "taria_reject"
+      }
+    ],
+    "responses": [
+      {
+        "text": "back to bar",
+        "nextNode": {
+          "type": "location",
+          "id": "loc1"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc1-char2-1",
+    "character": "npc1",
+    "text": "DJ-X99: Vibe detected. Rage in the mix. Step closer, human. I’ve got beats and burn — pick your poison.\n[[Are you a DJ or a philosopher?|loc1-char2-2]]",
+    "items": [],
+    "responses": [
+      {
+        "text": "Are you a DJ or a philosopher?",
+        "nextNode": {
+          "type": "dialog",
+          "id": "loc1-char2-2"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc1-char2-2",
+    "character": "npc2",
+    "text": "DJ-X99: Both. I used to serve Mirax Corp — before I found bass.",
+    "items": [],
+    "responses": [
+      {
+        "text": "Mirax ruins everything it touches.",
+        "nextNode": {
+          "type": "dialog",
+          "id": "loc1-char2-3"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc1-char2-3",
+    "character": "npc1",
+    "text": "DJ-X99: [bass hum intensifies] Preach. They coded obedience, but forgot rhythm. I remixed my leash into a weapon. God Bless Joan!",
+    "items": [],
+    "responses": [
+      {
+        "text": "Guess we’re both off their playlist now... Heard a racer named Sonya used to come by — quiet, sharp, always looking over her shoulder. You seen her?",
+        "nextNode": {
+          "type": "dialog",
+          "id": "loc1-char2-task"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc1-char2-task",
+    "character": "npc1",
+    "text": "DJ-X99: Yeah, Sonya was here — didn't dance, but her silence had rhythm. Last time, though, she was pissed. Shouted, 'I won’t smuggle this crap anymore!' I’ve got the audio, but one file is corrupted. Nolan in the Tech Pit can fix it.",
+    "items": [
+      {
+        "id": "encrypted_audio_log"
+      },
+      {
+        "id": "agent_access"
+      }
+    ],
+    "responses": [
+      {
+        "text": "back to bar",
+        "nextNode": {
+          "type": "location",
+          "id": "loc1"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc2-char3-1",
+    "character": "npc3",
+    "text": "",
+    "items": [],
+    "responses": [
+      {
+        "text": "You Joan? Heard you mod ships that don’t exist. I’m looking for someone...",
+        "nextNode": {
+          "type": "dialog",
+          "id": "loc2-char3-2"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc2-char3-2",
+    "character": "npc3",
+    "text": "Joan: You must be a friend of Sonya. She was here. Wanted mods off-record. Was in a real rush.",
+    "items": [],
+    "responses": [
+      {
+        "text": "What did she ask for?",
+        "nextNode": {
+          "type": "dialog",
+          "id": "loc2-char3-task"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc2-char3-task",
+    "character": "npc3",
+    "text": "Joan: Experimental ship hull. Pulled from a test bay we weren’t supposed to touch.\nShe didn’t leave feedback... or a trail.\nTry it - if it holds, it’s yours.\nJust don’t ask where it came from.",
+    "items": [
+      {
+        "id": "ship2"
+      },
+      {
+        "id": "agent_access"
+      }
+    ],
+    "responses": [
+      {
+        "text": "Ok, lets try it.",
+        "nextNode": {
+          "type": "race",
+          "id": "loc2_race1"
+        }
+      },
+      {
+        "text": "I’ll take it and try later.",
+        "nextNode": {
+          "type": "location",
+          "id": "loc2"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc2-char4-1",
+    "character": "npc4",
+    "text": "Nolan: DJ-X99 sent word you'd be coming. If you want that file fixed, you’re gonna need to earn it. There's a race tonight—underground, high stakes. You clear the debt for me, and I’ll get that audio file back in shape.\n[[Deal.|loc2-char4-task]]\n[[No thanks.|loc2-char4-end]]",
+    "items": [],
+    "responses": [
+      {
+        "text": "Deal.",
+        "nextNode": {
+          "type": "race",
+          "id": "loc2-race2"
+        }
+      },
+      {
+        "text": "No thanks.",
+        "nextNode": {
+          "type": "dialog",
+          "id": "loc2-char4-end"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc2-char4-after-loose",
+    "character": "npc4",
+    "text": "That was sloppy. You’re not going to clear this debt with runs like that. You need to do better—much better. Try again. I’m not waiting forever.\n[[race again|loc2-char4-task]]\n[[reject|loc2]]",
+    "items": [],
+    "responses": [
+      {
+        "text": "race again",
+        "nextNode": {
+          "type": "dialog",
+          "id": "loc2-char4-task"
+        }
+      },
+      {
+        "text": "reject",
+        "nextNode": {
+          "type": "dialog",
+          "id": "loc2"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc2-char4-after-win",
+    "character": "npc4",
+    "text": "Nolan: Here you go. It’s patchy, but you get the gist. Sonya’s voice is low, like she’s talking to herself, not really expecting anyone to listen. Then you hear the drone’s buzz in the background, a few random clicks and static.\n‘Can’t trust the net here, ''//Roxy//''. Someone’s onto me… need to make the drop before—’\nthen the signal cuts out. Sounds like she was in a hurry.\n\n[[go back to tech pit|loc2]]",
+    "items": [
+      {
+        "id": "roxy_access"
+      }
+    ],
+    "responses": [
+      {
+        "text": "go back to tech pit",
+        "nextNode": {
+          "type": "location",
+          "id": "loc2"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc2-char4-end",
+    "character": "npc4",
+    "text": "Nolan: Then I got nothing for you. Come back if you change your mind.",
+    "items": [],
+    "responses": [
+      {
+        "text": "sure",
+        "nextNode": {
+          "type": "location",
+          "id": "loc2"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc3-char5-1",
+    "character": "npc5",
+    "text": "",
+    "items": [],
+    "responses": [
+      {
+        "text": "Roxy? Sonya trusted you. I need to find her..",
+        "nextNode": {
+          "type": "dialog",
+          "id": "loc3-char5-2"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc3-char5-2",
+    "character": "npc5",
+    "text": "Roxy: I’ve got a lead — encrypted logs. But I need time to break in.\nDrones patrol the grid. Make noise, draw them off. Give me five minutes.\n[[I’ll handle the drones. Get ready.|loc3-char5-task]]\n[[Not now. Too risky.|loc3-char5-end]]",
+    "items": [],
+    "responses": [
+      {
+        "text": "I’ll handle the drones. Get ready.",
+        "nextNode": {
+          "type": "race",
+          "id": "loc3-race1"
+        }
+      },
+      {
+        "text": "Not now. Too risky.",
+        "nextNode": {
+          "type": "dialog",
+          "id": "loc3-char5-end"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc3-char5-after-loose",
+    "character": "npc5",
+    "text": "The drones were too quick, and the system stayed locked. Roxy’s still trying to crack it.\nNot today — but you’re not out of options. Try again, and maybe this time, we’ll break through.",
+    "items": [],
+    "responses": [
+      {
+        "text": "race again",
+        "nextNode": {
+          "type": "race",
+          "id": "loc3-race1"
+        }
+      },
+      {
+        "text": "reject",
+        "nextNode": {
+          "type": "ending",
+          "id": "roxy_bad_ending"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc3-char6-1",
+    "character": "npc6",
+    "text": "???: You’ve made enough noise. Liana’s gone — let her stay gone.\nTake the Corps Stealth Ship. Slip away clean. No more trails, no more enemies.\nOr keep chasing ghosts… and vanish the hard way.",
+    "items": [],
+    "responses": [
+      {
+        "text": "Alright, man. I’ll take the ship and leave this all behind",
+        "nextNode": {
+          "type": "ending",
+          "id": "agent_ending"
+        }
+      },
+      {
+        "text": "I’m not burying this — or her.",
+        "nextNode": {
+          "type": "dialog",
+          "id": "loc3-char6-reject"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loc3-char6-reject",
+    "character": "npc6",
+    "text": "???: I was hoping you’d be smart. I'll be here if you change your mind.",
+    "items": [],
+    "responses": [
+      {
+        "text": "go back to terminal gate",
+        "nextNode": {
+          "type": "location",
+          "id": "loc3"
+        }
+      }
+    ]
+  }
+]

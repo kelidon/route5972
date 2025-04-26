@@ -1,0 +1,227 @@
+[
+  {
+    "id": "npc1",
+    "name": "Taria",
+    "description": "racer",
+    "image": "assets/images/taria.png"
+  },
+  {
+    "id": "npc2",
+    "name": "DJ-X99",
+    "description": "dj-robot",
+    "image": "assets/images/dj-x99.png"
+  },
+  {
+    "id": "npc3",
+    "name": "Joan",
+    "description": "mechanic",
+    "image": "assets/images/joan.png"
+  },
+  {
+    "id": "npc4",
+    "name": "Nolan",
+    "description": "technic",
+    "image": "assets/images/nolan.png"
+  },
+  {
+    "id": "npc5",
+    "name": "Roxy",
+    "description": "info support",
+    "image": "assets/images/roxy.png"
+  },
+  {
+    "id": "npc6",
+    "name": "???",
+    "description": "corp agent",
+    "image": "assets/images/agent.png"
+  },
+  {
+    "id": "loc1",
+    "name": "The Broken Comet Bar",
+    "description": "A bar in the middle of nowhere. A place to meet racers, mechanics, and shady characters.",
+    "image": "assets/images/bar.png",
+    "items": [
+      {
+        "id": "npc1"
+      },
+      {
+        "id": "npc2"
+      }
+    ]
+  },
+  {
+    "id": "loc2",
+    "name": "404 Tech Pit",
+    "description": "A mechanic shop where you can find the best parts for your ship.",
+    "image": "assets/images/pit.png",
+    "items": [
+      {
+        "id": "npc3"
+      },
+      {
+        "id": "npc4"
+      }
+    ]
+  },
+  {
+    "id": "loc3",
+    "name": "Aero-Gate Vector 9",
+    "description": "A gate of spaceship arrivals and departures terminal.",
+    "image": "assets/images/gate.png",
+    "items": [
+      {
+        "id": "npc5"
+      },
+      {
+        "id": "npc6"
+      }
+    ]
+  },
+  {
+    "id": "loc1",
+    "name": "The Broken"
+  },
+  {
+    "id": "loc1_race1",
+    "name": "Midnight Track",
+    "mapAsset": "assets/maps/loc1_race1.json",
+    "description": "Taria: Midnight track, orbital shadow. Win — I talk. Lose — forget her name.",
+    "successNode": {
+      "type": "dialog",
+      "id": "loc1-char1-after-win"
+    },
+    "failureNode": {
+      "type": "dialog",
+      "id": "loc1-char1-after-loose"
+    }
+  },
+  {
+    "id": "loc2_race1",
+    "name": "Industrial Zone",
+    "mapAsset": "assets/maps/loc2_race1.json",
+    "description": "Joan: Experimental ship hull. Pulled from a test bay we weren’t supposed to touch.\nSonya didn’t leave feedback... or a trail.\nIf it holds, it’s yours.\nJust don’t ask where it came from.",
+    "successNode": {
+      "type": "location",
+      "id": "loc2"
+    },
+    "failureNode": {
+      "type": "location",
+      "id": "loc2"
+    }
+  },
+  {
+    "id": "loc2_race2",
+    "name": "The Ruins",
+    "mapAsset": "assets/maps/loc2_race2.json",
+    "description": "Nolan: The track winds through the old industrial sector, tight turns and broken pathways. If you clear the debt, I’ll fix that file for you.",
+    "successNode": {
+      "type": "dialog",
+      "id": "loc2-char4-after-win"
+    },
+    "failureNode": {
+      "type": "dialog",
+      "id": "loc2-char4-after-loose"
+    }
+  },
+  {
+    "id": "loc3_race1",
+    "name": "The Abyss",
+    "mapAsset": "assets/maps/loc4_race1.json",
+    "description": "Blaze through a corporate maintenance corridor. Trigger scanners, make noise, draw all the heat — while Roxy cracks their server for Sonya’s coordinates.",
+    "successNode": {
+      "type": "ending",
+      "id": "roxy_good_ending"
+    },
+    "failureNode": {
+      "type": "dialog",
+      "id": "loc3-char5-after-loose"
+    }
+  },
+  {
+    "id": "ship1",
+    "name": "Glider-X",
+    "description": "Regular ship",
+    "image": "assets/images/ship1.png",
+    "stats": {
+      "speed": 3,
+      "handling": 3,
+      "boost": 3
+    }
+  },
+  {
+    "id": "ship2",
+    "name": "Experimental Hull Model",
+    "description": "Pro ship",
+    "image": "assets/images/ship2.png",
+    "stats": {
+      "speed": 5,
+      "handling": 4,
+      "boost": 4
+    }
+  },
+  {
+    "id": "ship3",
+    "name": "Corp's Stealth Ship",
+    "description": "Mirax Corp's prototype ship.",
+    "image": "assets/images/ship3.png",
+    "stats": {
+      "speed": 7,
+      "handling": 7,
+      "boost": 7
+    }
+  },
+  {
+    "id": "encrypted_audio_log",
+    "name": "Encrypted Audio Log",
+    "description": "Corrupted recording of Sonya’s last words in the bar.",
+    "type": "quest_item"
+  },
+  {
+    "id": "taria_race_access",
+    "name": "Access to Taria race",
+    "description": "Access to Taria race",
+    "type": "quest_item"
+  },
+  {
+    "id": "taria_race_win",
+    "name": "Taria race win",
+    "description": "Taria race win",
+    "type": "quest_item"
+  },
+  {
+    "id": "taria_reject",
+    "name": "Reject Taria",
+    "description": "Taria will not speak again",
+    "type": "quest_item"
+  },
+  {
+    "id": "roxy_access",
+    "name": "Can talk to Roxy",
+    "description": "Roxy will appear in game",
+    "type": "quest_item"
+  },
+  {
+    "id": "agent_access",
+    "name": "Can talk to Agent ???",
+    "description": "Agent ??? will appear in game",
+    "type": "quest_item"
+  },
+  {
+    "id": "agent_ending",
+    "name": "Accepting agent money",
+    "description": "You took the credits. Enough to disappear, start fresh, forget her name.\nThe mystery stays buried — and so does the truth.",
+    "type": "ending"
+  },
+  {
+    "id": "roxy_good_ending",
+    "name": "Roxy success",
+    "description": " The last drone veers off — noise was enough. Sena’s breach worked.\nShe sends a ping: “Got it. Sonya’s signal traces back to Volaris-3. Abandoned station, deep storm sector. Hope you’re ready.” It looks like the search just got real.",
+    "type": "ending"
+  },
+  {
+    "id": "roxy_bad_ending",
+    "name": "Drones have captured you and Roxy",
+    "description": "The drones swarm faster than you can react.\nHeavy restraints clamp onto your arms; Roxy curses, thrashing beside you.\nNo hacking, no running — this time, they have you both.",
+    "type": "ending"
+  }
+]
