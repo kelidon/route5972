@@ -1,6 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
-import 'package:route5972/common/mixin/scene_animation_mixin.dart';
+import 'package:route5972/common/mixin/scene_transition_mixin.dart';
 import 'package:route5972/main_game.dart';
 import 'package:route5972/race/racing_scene_background.dart';
 import 'package:route5972/race/ship.dart';

@@ -9,10 +9,8 @@ mixin SceneTransitionMixin on RectangleComponent {
 
   Future<void> fadeOut(VoidCallback onComplete) async {
     add(
-      ColorFadeComponent(
-        size: size,
-        color: Colors.black.withValues(alpha: 0),
-      )..add(
+      _ColorFadeComponent(size: size, color: Colors.black.withValues(alpha: 0))
+        ..add(
           OpacityEffect.fadeIn(
             EffectController(duration: duration),
             onComplete: onComplete,
@@ -23,24 +21,15 @@ mixin SceneTransitionMixin on RectangleComponent {
 
   Future<void> fadeIn() async {
     add(
-      ColorFadeComponent(
-        size: size,
-        color: Colors.black,
-      )..add(
-          OpacityEffect.fadeOut(
-            EffectController(duration: duration),
-          ),
-        ),
+      _ColorFadeComponent(size: size, color: Colors.black)
+        ..add(OpacityEffect.fadeOut(EffectController(duration: duration))),
     );
   }
 }
 
-class ColorFadeComponent extends RectangleComponent {
-  ColorFadeComponent({
-    required Color color,
-    super.size,
-    super.paint,
-  }) {
+class _ColorFadeComponent extends RectangleComponent {
+  _ColorFadeComponent({required Color color, super.size}) {
+    priority = 1000;
     paint.color = color;
   }
 }

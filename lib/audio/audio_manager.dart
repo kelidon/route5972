@@ -10,7 +10,6 @@ enum Sfxs {
   final String name;
   const Sfxs(this.name);
   String get path => 'sfx/$name.mp3';
-
 }
 
 enum Musics {
@@ -23,10 +22,20 @@ enum Musics {
 }
 
 class AudioManager {
-  static Future<void> load() async {
+  bool enabled = false;
+
+  Future<void> load() async {
+    enabled = true;
     await FlameAudio.audioCache.loadAll([
       ...Sfxs.values.map((e) => 'sfx/$e.mp3'),
       ...Musics.values.map((e) => 'sfx/$e.mp3'),
     ]);
   }
+
+  void sfx(Sfxs sfx) {
+    if (!enabled) return;
+    FlameAudio.play(sfx.path);
+  }
 }
+
+final AudioManager audio = AudioManager();

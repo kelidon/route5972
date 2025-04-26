@@ -1,10 +1,11 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:flame/components.dart';
 import 'package:route5972/common/style/text_paint.dart';
 
-class CTextComponent extends TextComponent<TextPaint> {
-  CTextComponent(
+class CTextComp extends TextComponent<TextPaint> {
+  CTextComp(
     this.content, {
     this.style,
     super.position,
@@ -15,13 +16,14 @@ class CTextComponent extends TextComponent<TextPaint> {
     super.children,
     super.priority,
     this.animate = true,
+    this.onEnd,
     super.key,
   });
 
   final String content;
   final bool animate;
   final TextPaint? style;
-
+  final VoidCallback? onEnd;
   int length = 0;
   bool running = true;
 
@@ -39,8 +41,9 @@ class CTextComponent extends TextComponent<TextPaint> {
         removeOnFinish: true,
         onTick: () {
           if (!running) return;
-          if (length == content.length - 1) {
+          if (length == content.length) {
             running = false;
+            onEnd?.call();
             return;
           }
           length++;

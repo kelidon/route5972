@@ -3,7 +3,7 @@ import 'package:flame/game.dart';
 import 'package:flame_forge2d/forge2d_game.dart';
 import 'package:route5972/city_map/scene/bar_scene.dart';
 import 'package:route5972/city_map/scene/city_map_scene.dart';
-import 'package:route5972/city_map/scene/intro_scene.dart';
+import 'package:route5972/city_map/scene/audio_switch_scene.dart';
 import 'package:route5972/city_map/scene/tech_pit_scene.dart';
 import 'package:route5972/city_map/scene/terminal_scene.dart';
 import 'package:route5972/dialog/model/dialog_data.dart';
@@ -34,7 +34,7 @@ class MainGame extends Forge2DGame
         techPit: Route(TechPitScene.new),
         terminal: Route(TerminalScene.new),
         race: Route(RacingScene.new),
-        intro: Route(IntroScene.new),
+        intro: Route(AudioSwitchScene.new),
       },
     );
 
