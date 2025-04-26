@@ -4,7 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flutter/material.dart';
 
-mixin SceneAnimationMixin on RectangleComponent {
+mixin SceneTransitionMixin on RectangleComponent {
   static const double duration = 0.69;
 
   Future<void> fadeOut(VoidCallback onComplete) async {

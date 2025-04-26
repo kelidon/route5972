@@ -1,6 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
-import 'package:route5972/city_map/mixin/route_animation_mixin.dart';
+import 'package:route5972/common/mixin/scene_animation_mixin.dart';
 import 'package:route5972/main_game.dart';
 import 'package:route5972/race/racing_scene_background.dart';
 import 'package:route5972/race/ship.dart';
@@ -17,7 +17,7 @@ final Map<LogicalKeyboardKey, LogicalKeyboardKey> controlKeys = {
 };
 
 class RacingScene extends RectangleComponent
-    with HasGameReference<MainGame>, KeyboardHandler, SceneAnimationMixin {
+    with HasGameReference<MainGame>, KeyboardHandler, SceneTransitionMixin {
   static final Vector2 mapSize = Vector2.all(500);
   static const double playZoom = 6.0;
   late Map<LogicalKeyboardKey, LogicalKeyboardKey> activeKeyMap;
