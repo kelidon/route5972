@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:flame/components.dart';
 import 'package:flame/layout.dart';
-import 'package:route5972/audio/audio_manager.dart';
+import 'package:route5972/audio/audio_service.dart';
 import 'package:route5972/common/components/c_button_comp.dart';
 import 'package:route5972/common/components/c_text_comp.dart';
 import 'package:route5972/common/mixin/scene_transition_mixin.dart';
@@ -25,7 +25,8 @@ class AudioSwitchScene extends RectangleComponent
   @override
   Future<void> onLoad() async {
     size = game.size;
-
+    paint = Paint()..color = Color(0xFF000000);
+    
     parentRect = RectangleComponent(
       size: game.size,
       paint: Paint()..color = Color(0xFF000000),

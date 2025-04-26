@@ -13,15 +13,13 @@ enum Sfxs {
 }
 
 enum Musics {
-  mainMenu('main_menu');
+  mainMenu(3);
 
-  final String name;
-  const Musics(this.name);
-
-  String get path => 'music/$name.mp3';
+  final int? variations;
+  const Musics(this.variations);
 }
 
-class AudioManager {
+class AudioService {
   bool enabled = false;
 
   Future<void> load() async {
@@ -38,4 +36,4 @@ class AudioManager {
   }
 }
 
-final AudioManager audio = AudioManager();
+final AudioService audio = AudioService();
