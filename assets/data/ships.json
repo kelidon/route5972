@@ -1,0 +1,35 @@
+[
+  {
+    "id": "ship1",
+    "name": "Glider-X",
+    "description": "Regular ship",
+    "image": "assets/images/ship1.png",
+    "stats": {
+      "speed": 3,
+      "handling": 3,
+      "boost": 3
+    }
+  },
+  {
+    "id": "ship2",
+    "name": "Experimental Hull Model",
+    "description": "Pro ship",
+    "image": "assets/images/ship2.png",
+    "stats": {
+      "speed": 5,
+      "handling": 4,
+      "boost": 4
+    }
+  },
+  {
+    "id": "ship3",
+    "name": "Corp's Stealth Ship",
+    "description": "Mirax Corp's prototype ship.",
+    "image": "assets/images/ship3.png",
+    "stats": {
+      "speed": 7,
+      "handling": 7,
+      "boost": 7
+    }
+  }
+]

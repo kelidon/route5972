@@ -1,0 +1,50 @@
+[
+  {
+    "id": "encrypted_audio_log",
+    "name": "Encrypted Audio Log",
+    "description": "Corrupted recording of Sonya’s last words in the bar.",
+    "image": "assets/images/encrypted_audio.png"
+  },
+  {
+    "id": "agent_ship_reward",
+    "name": "Corp's Stealth Ship",
+    "description": "Mirax Corp's prototype ship.",
+    "image": "assets/images/agent_ship_reward.png"
+  },
+  {
+    "id": "experimental_ship_hull",
+    "name": "Experimental Hull Model",
+    "description": "Pro ship",
+    "image": "assets/images/experimental_hull.png"
+  },
+  {
+    "id": "taria_race_access",
+    "name": "Access to Taria race",
+    "description": "Access to Taria race"
+  },
+  {
+    "id": "taria_race_win",
+    "name": "Taria race win",
+    "description": "Taria race win"
+  },
+  {
+    "id": "nolan_race_win",
+    "name": "Nolan race win",
+    "description": "Nolan race win"
+  },
+  {
+    "id": "taria_reject",
+    "name": "Reject Taria",
+    "description": "Taria will not speak again"
+  },
+  {
+    "id": "roxy_access",
+    "name": "Can talk to Roxy",
+    "description": "Roxy will appear in game"
+  },
+  {
+    "id": "agent_access",
+    "name": "Can talk to Agent ???",
+    "description": "Agent ??? will appear in game"
+  }
+]

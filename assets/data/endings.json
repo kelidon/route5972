@@ -1,0 +1,20 @@
+[
+  {
+    "id": "agent_ending",
+    "name": "Accepting agent money",
+    "description": "You took the credits. Enough to disappear, start fresh, forget her name.\nThe mystery stays buried — and so does the truth.",
+    "image": "assets/images/agent_ending.png"
+  },
+  {
+    "id": "roxy_good_ending",
+    "name": "Roxy success",
+    "description": " The last drone veers off — noise was enough. Sena’s breach worked.\nShe sends a ping: “Got it. Sonya’s signal traces back to Volaris-3. Abandoned station, deep storm sector. Hope you’re ready.” It looks like the search just got real.",
+    "image": "assets/images/roxy_good_ending.png"
+  },
+  {
+    "id": "roxy_bad_ending",
+    "name": "Drones have captured you and Roxy",
+    "description": "The drones swarm faster than you can react.\nHeavy restraints clamp onto your arms; Roxy curses, thrashing beside you.\nNo hacking, no running — this time, they have you both.",
+    "image": "assets/images/roxy_bad_ending.png"
+  }
+]

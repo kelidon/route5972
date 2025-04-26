@@ -1,0 +1,44 @@
+[
+  {
+    "id": "npc1",
+    "name": "Taria",
+    "description": "racer",
+    "image": "assets/images/taria.png",
+    "smallImage": "assets/images/taria_small.png"
+  },
+  {
+    "id": "npc2",
+    "name": "DJ-X99",
+    "description": "dj-robot",
+    "image": "assets/images/dj-x99.png",
+    "smallImage": "assets/images/dj-x99_small.png"
+  },
+  {
+    "id": "npc3",
+    "name": "Joan",
+    "description": "mechanic",
+    "image": "assets/images/joan.png",
+    "smallImage": "assets/images/joan_small.png"
+  },
+  {
+    "id": "npc4",
+    "name": "Nolan",
+    "description": "technic",
+    "image": "assets/images/nolan.png",
+    "smallImage": "assets/images/nolan_small.png"
+  },
+  {
+    "id": "npc5",
+    "name": "Roxy",
+    "description": "info support",
+    "image": "assets/images/roxy.png",
+    "smallImage": "assets/images/roxy_small.png"
+  },
+  {
+    "id": "npc6",
+    "name": "???",
+    "description": "corp agent",
+    "image": "assets/images/agent.png",
+    "smallImage": "assets/images/agent_small.png"
+  }
+]

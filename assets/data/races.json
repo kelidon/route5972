@@ -1,0 +1,58 @@
+[
+  {
+    "id": "loc1_race1",
+    "name": "Midnight Track",
+    "mapAsset": "assets/maps/loc1_race1.json",
+    "description": "Taria: Midnight track, orbital shadow. Win — I talk. Lose — forget her name.",
+    "successNode": {
+      "type": "dialog",
+      "id": "loc1-char1-after-win"
+    },
+    "failureNode": {
+      "type": "dialog",
+      "id": "loc1-char1-after-loose"
+    }
+  },
+  {
+    "id": "loc2_race1",
+    "name": "Industrial Zone",
+    "mapAsset": "assets/maps/loc2_race1.json",
+    "description": "Joan: Experimental ship hull. Pulled from a test bay we weren’t supposed to touch.\nSonya didn’t leave feedback... or a trail.\nIf it holds, it’s yours.\nJust don’t ask where it came from.",
+    "successNode": {
+      "type": "location",
+      "id": "loc2"
+    },
+    "failureNode": {
+      "type": "location",
+      "id": "loc2"
+    }
+  },
+  {
+    "id": "loc2_race2",
+    "name": "The Ruins",
+    "mapAsset": "assets/maps/loc2_race2.json",
+    "description": "Nolan: The track winds through the old industrial sector, tight turns and broken pathways. If you clear the debt, I’ll fix that file for you.",
+    "successNode": {
+      "type": "dialog",
+      "id": "loc2-char4-after-win"
+    },
+    "failureNode": {
+      "type": "dialog",
+      "id": "loc2-char4-after-loose"
+    }
+  },
+  {
+    "id": "loc3_race1",
+    "name": "The Abyss",
+    "mapAsset": "assets/maps/loc4_race1.json",
+    "description": "Blaze through a corporate maintenance corridor. Trigger scanners, make noise, draw all the heat — while Roxy cracks their server for Sonya’s coordinates.",
+    "successNode": {
+      "type": "ending",
+      "id": "roxy_good_ending"
+    },
+    "failureNode": {
+      "type": "dialog",
+      "id": "loc3-char5-after-loose"
+    }
+  }
+]

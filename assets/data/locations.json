@@ -1,0 +1,32 @@
+[
+  {
+    "id": "loc1",
+    "name": "The Broken Comet Bar",
+    "description": "A bar in the middle of nowhere. A place to meet racers, mechanics, and shady characters.",
+    "image": "assets/images/bar.png",
+    "npcIds": [
+      "npc1",
+      "npc2"
+    ]
+  },
+  {
+    "id": "loc2",
+    "name": "404 Tech Pit",
+    "description": "A mechanic shop where you can find the best parts for your ship.",
+    "image": "assets/images/pit.png",
+    "npcIds": [
+      "npc3",
+      "npc4"
+    ]
+  },
+  {
+    "id": "loc3",
+    "name": "Aero-Gate Vector 9",
+    "description": "A gate of spaceship arrivals and departures terminal.",
+    "image": "assets/images/gate.png",
+    "npcIds": [
+      "npc5",
+      "npc6"
+    ]
+  }
+]
