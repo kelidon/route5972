@@ -92,10 +92,10 @@ class PlotRepo {
   Future<void> loadRaces() async {
     final jsonString = await rootBundle.loadString('assets/data/races.json');
 
-    final List<NPCData> npcDataList =
-        (json.decode(jsonString) as List).map((data) => NPCData.fromJson(data)).toList();
+    final List<RaceData> raceDataList =
+        (json.decode(jsonString) as List).map((data) => RaceData.fromJson(data)).toList();
 
-    npcs.addAll({for (var data in npcDataList) data.id: data});
+    races.addAll({for (var data in raceDataList) data.id: data});
   }
 
   Future<void> loadShips() async {

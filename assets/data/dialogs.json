@@ -4,7 +4,7 @@
     "npc": "npc1",
     "text": "Taria: You look like someone with a past. That spine’s too straight. What brings you to Hexanova-9, pilot?",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "I'm looking for someone. Sonya.",
         "nextNode": {
@@ -35,7 +35,7 @@
     "items": [
       "taria_race_access"
     ],
-    "responses": [
+    "options": [
       {
         "text": "A race?",
         "nextNode": {
@@ -50,7 +50,7 @@
     "npc": "npc1",
     "text": "So you’ve heard of me. Ruled the rings, huh? That’s what they’re saying now?\nAlright, racer — you’ve got my attention. Now tell me... what brings a legend-hunter like you to Voiden?\n[[I'm looking for someone. Sonya.|loc1-char1-2]]",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "I'm looking for someone. Sonya.",
         "nextNode": {
@@ -65,7 +65,7 @@
     "npc": "npc1",
     "text": "Taria: Sonya wouldn’t quit after a scrape like that. What about you?",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "race again",
         "nextNode": {
@@ -91,7 +91,7 @@
       "taria_race_win",
       "agent_access"
     ],
-    "responses": [
+    "options": [
       {
         "text": "go back to bar",
         "nextNode": {
@@ -108,7 +108,7 @@
     "items": [
       "taria_reject"
     ],
-    "responses": [
+    "options": [
       {
         "text": "back to bar",
         "nextNode": {
@@ -123,7 +123,7 @@
     "npc": "npc1",
     "text": "DJ-X99: Vibe detected. Rage in the mix. Step closer, human. I’ve got beats and burn — pick your poison.\n[[Are you a DJ or a philosopher?|loc1-char2-2]]",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "Are you a DJ or a philosopher?",
         "nextNode": {
@@ -138,7 +138,7 @@
     "npc": "npc2",
     "text": "DJ-X99: Both. I used to serve Mirax Corp — before I found bass.",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "Mirax ruins everything it touches.",
         "nextNode": {
@@ -153,7 +153,7 @@
     "npc": "npc1",
     "text": "DJ-X99: [bass hum intensifies] Preach. They coded obedience, but forgot rhythm. I remixed my leash into a weapon. God Bless Joan!",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "Guess we’re both off their playlist now... Heard a racer named Sonya used to come by — quiet, sharp, always looking over her shoulder. You seen her?",
         "nextNode": {
@@ -168,7 +168,7 @@
     "npc": "npc1",
     "text": "DJ-X99: [ba-dum tss boom tss peww] Cheers, human.",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "Hi",
         "nextNode": {
@@ -186,7 +186,7 @@
       "encrypted_audio_log",
       "agent_access"
     ],
-    "responses": [
+    "options": [
       {
         "text": "back to bar",
         "nextNode": {
@@ -201,7 +201,7 @@
     "npc": "npc3",
     "text": "",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "You Joan? Heard you mod ships that don’t exist. I’m looking for someone...",
         "nextNode": {
@@ -216,7 +216,7 @@
     "npc": "npc3",
     "text": "Joan: You must be a friend of Sonya. She was here. Wanted mods off-record. Was in a real rush.",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "What did she ask for?",
         "nextNode": {
@@ -231,7 +231,7 @@
     "npc": "npc3",
     "text": "Joan: Howdy!",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "Hi",
         "nextNode": {
@@ -249,7 +249,7 @@
       "ship2",
       "agent_access"
     ],
-    "responses": [
+    "options": [
       {
         "text": "Ok, lets try it.",
         "nextNode": {
@@ -271,7 +271,7 @@
     "npc": "npc4",
     "text": "Nolan: DJ-X99 sent word you'd be coming. If you want that file fixed, you’re gonna need to earn it. There's a race tonight—underground, high stakes. You clear the debt for me, and I’ll get that audio file back in shape.\n[[Deal.|loc2-char4-task]]\n[[No thanks.|loc2-char4-end]]",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "Deal.",
         "nextNode": {
@@ -293,7 +293,7 @@
     "npc": "npc4",
     "text": "That was sloppy. You’re not going to clear this debt with runs like that. You need to do better—much better. Try again. I’m not waiting forever.\n[[race again|loc2-char4-task]]\n[[reject|loc2]]",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "race again",
         "nextNode": {
@@ -317,7 +317,7 @@
     "items": [
       "roxy_access"
     ],
-    "responses": [
+    "options": [
       {
         "text": "go back to tech pit",
         "nextNode": {
@@ -332,7 +332,7 @@
     "npc": "npc4",
     "text": "Nolan: Then I got nothing for you. Come back if you change your mind.",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "sure",
         "nextNode": {
@@ -347,7 +347,7 @@
     "npc": "npc5",
     "text": "",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "Roxy? Sonya trusted you. I need to find her..",
         "nextNode": {
@@ -362,7 +362,7 @@
     "npc": "npc5",
     "text": "Roxy: I’ve got a lead — encrypted logs. But I need time to break in.\nDrones patrol the grid. Make noise, draw them off. Give me five minutes.\n[[I’ll handle the drones. Get ready.|loc3-char5-task]]\n[[Not now. Too risky.|loc3-char5-end]]",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "I’ll handle the drones. Get ready.",
         "nextNode": {
@@ -384,7 +384,7 @@
     "npc": "npc5",
     "text": "The drones were too quick, and the system stayed locked. Roxy’s still trying to crack it.\nNot today — but you’re not out of options. Try again, and maybe this time, we’ll break through.",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "race again",
         "nextNode": {
@@ -406,7 +406,7 @@
     "npc": "npc6",
     "text": "???: You’ve made enough noise. Liana’s gone — let her stay gone.\nTake the Corps Stealth Ship. Slip away clean. No more trails, no more enemies.\nOr keep chasing ghosts… and vanish the hard way.",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "Alright, man. I’ll take the ship and leave this all behind",
         "nextNode": {
@@ -428,7 +428,7 @@
     "npc": "npc6",
     "text": "???: I was hoping you’d be smart. I'll be here if you change your mind.",
     "items": [],
-    "responses": [
+    "options": [
       {
         "text": "go back to terminal gate",
         "nextNode": {

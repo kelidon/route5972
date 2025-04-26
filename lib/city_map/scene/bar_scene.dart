@@ -34,6 +34,7 @@ class BarScene extends RectangleComponent with HasGameReference<MainGame>, Scene
         ],
       ),
     );
+
     fadeIn();
   }
 }

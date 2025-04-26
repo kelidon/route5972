@@ -12,9 +12,10 @@ DialogData _$DialogDataFromJson(Map<String, dynamic> json) => DialogData(
   text: json['text'] as String,
   items: (json['items'] as List<dynamic>).map((e) => e as String).toList(),
   options:
-      (json['responses'] as List<dynamic>)
+      (json['options'] as List<dynamic>)
           .map((e) => DialogOption.fromJson(e as Map<String, dynamic>))
           .toList(),
+  image: json['image'] as String?,
 );
 
 Map<String, dynamic> _$DialogDataToJson(DialogData instance) =>
@@ -22,8 +23,9 @@ Map<String, dynamic> _$DialogDataToJson(DialogData instance) =>
       'id': instance.id,
       'npc': instance.npc,
       'text': instance.text,
+      'options': instance.options,
       'items': instance.items,
-      'responses': instance.options,
+      'image': instance.image,
     };
 
 DialogOption _$DialogOptionFromJson(Map<String, dynamic> json) => DialogOption(
