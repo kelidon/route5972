@@ -1,11 +1,11 @@
 import 'package:flame/components.dart';
-import 'package:route5972/city_map/mixin/route_animation_mixin.dart';
+import 'package:route5972/common/mixin/scene_transition_mixin.dart';
 import 'package:route5972/city_map/model/interactive_item.dart';
 import 'package:route5972/city_map/model/interactive_map.dart';
 import 'package:route5972/dialog/model/dialog_data.dart';
 import 'package:route5972/main_game.dart';
 
-class BarScene extends RectangleComponent with HasGameReference<MainGame>, SceneAnimationMixin {
+class BarScene extends RectangleComponent with HasGameReference<MainGame>, SceneTransitionMixin {
   @override
   Future<void> onLoad() async {
     size = game.size;
