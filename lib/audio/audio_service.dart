@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'dart:math';
 
 import 'package:flame_audio/flame_audio.dart';
@@ -39,10 +38,10 @@ enum Music {
 class AudioService {
   bool enabled = false;
   double _currentVolume = 1;
-  StreamSubscription? onTrackComplete;
   bool cutMusic = false;
   final bgsm = FlameAudio.bgm;
   AudioPlayer get audioPlayer => bgsm.audioPlayer;
+
   Future<void> load() async {
     enabled = true;
     final music = [];
