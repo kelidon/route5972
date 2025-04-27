@@ -17,6 +17,8 @@ dependencies:
   flame_audio: ^2.11.5
   flame_tiled: ^3.0.2
 
+  rxdart: ^0.28.0
+
   json_annotation: ^4.9.0
 
 dev_dependencies:

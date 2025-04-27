@@ -4,6 +4,7 @@ import 'package:route5972/plot/model/dialog_data.dart';
 import 'package:route5972/plot/model/npc_data.dart';
 import 'package:route5972/plot/plot_data_manager.dart';
 import 'package:route5972/plot/plot_repo.dart';
+import 'package:rxdart/rxdart.dart';
 
 class PlotService {
   final PlotRepo _repo = PlotRepo();
@@ -13,8 +14,7 @@ class PlotService {
 
   Future<void> loadData() => _repo.loadData();
 
-  final StreamController<DialogData> _currentDialogController =
-      StreamController<DialogData>.broadcast();
+  final StreamController<DialogData> _currentDialogController = BehaviorSubject<DialogData>();
 
   Stream<DialogData>? get currentDialogStream => _currentDialogController.stream;
 
