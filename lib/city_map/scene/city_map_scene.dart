@@ -14,7 +14,7 @@ class CityMapScene extends RectangleComponent
 
     await add(
       InteractiveMap(
-        backgroundImage: 'city_map.jpg',
+        backgroundImage: 'city_map.PNG',
         interactiveItems: [
           InteractiveItem(
             position: Vector2(100, 180),

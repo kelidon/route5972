@@ -60,6 +60,16 @@ class IntroScene extends RectangleComponent
         },
       ),
     );
+    add(
+      CButtonComp(
+        content: 'race scene',
+        position: Vector2(600, 0),
+        onPressed: () async {
+          audio.fadeOutCurrent();
+          game.router.pushReplacementNamed(MainGame.race);
+        },
+      ),
+    );
 
     _updateLayout();
 

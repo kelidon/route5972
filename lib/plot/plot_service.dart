@@ -28,6 +28,14 @@ class PlotService {
       return null;
     }
     return npc;
+  }  
+  
+  DialogData? getDialog(String dialogId) {
+    final dialog = _repo.getDialog(dialogId);
+    if (dialog == null) {
+      return null;
+    }
+    return dialog;
   }
 
   DialogData? getNPCDialog(String npcId) {
