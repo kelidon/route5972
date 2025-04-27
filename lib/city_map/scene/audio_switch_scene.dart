@@ -18,7 +18,7 @@ class AudioSwitchScene extends RectangleComponent
 
   Future<void> nextPage() async {
     await fadeOut(() {
-      game.router.pushReplacementNamed(MainGame.map);
+      game.router.pushReplacementNamed(MainGame.intro);
     });
   }
 

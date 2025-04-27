@@ -4,6 +4,7 @@ import 'package:flame_forge2d/forge2d_game.dart';
 import 'package:route5972/city_map/scene/audio_switch_scene.dart';
 import 'package:route5972/city_map/scene/bar_scene.dart';
 import 'package:route5972/city_map/scene/city_map_scene.dart';
+import 'package:route5972/city_map/scene/intro_scene.dart';
 import 'package:route5972/city_map/scene/tech_pit_scene.dart';
 import 'package:route5972/city_map/scene/terminal_scene.dart';
 import 'package:route5972/plot/model/dialog_data.dart';
@@ -19,6 +20,7 @@ class MainGame extends Forge2DGame with TapDetector, HasKeyboardHandlerComponent
   static const String terminal = 'terminal';
   static const String race = 'race';
   static const String intro = 'intro';
+  static const String audioSwitch = 'audioSwitch';
 
   static const dialogOverlayIdentifier = 'dialogOverlay';
 
@@ -29,14 +31,15 @@ class MainGame extends Forge2DGame with TapDetector, HasKeyboardHandlerComponent
   @override
   Future<void> onLoad() async {
     router = RouterComponent(
-      initialRoute: intro,
+      initialRoute: audioSwitch,
       routes: {
         map: Route(CityMapScene.new),
         bar: Route(BarScene.new),
         techPit: Route(TechPitScene.new),
         terminal: Route(TerminalScene.new),
         race: Route(RacingScene.new),
-        intro: Route(AudioSwitchScene.new),
+        audioSwitch: Route(AudioSwitchScene.new),
+        intro: Route(IntroScene.new),
       },
     );
 
