@@ -22,6 +22,14 @@ class PlotService {
     _currentDialogController.add(data);
   }
 
+  NPCData? getNPC(String npcId) {
+    final npc = _repo.getNPC(npcId);
+    if (npc == null) {
+      return null;
+    }
+    return npc;
+  }
+
   DialogData? getNPCDialog(String npcId) {
     final dialogId = _dataManager.getDialogIdByNPC(npcId, inventory.toList());
 

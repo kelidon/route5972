@@ -23,7 +23,7 @@ class BarScene extends RectangleComponent
             name: 'Bartender',
             image: 'npc.png',
             onTap: () async {
-              game.router.pushReplacementNamed(MainGame.map);
+              game.router.pushReplacementNamed(MainGame.race);
               // final dialog = game.plotService.getNPCDialog('npc1');
 
               // if (dialog == null) {

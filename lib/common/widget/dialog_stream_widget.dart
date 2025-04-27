@@ -31,7 +31,10 @@ class DialogStreamWidget extends StatelessWidget {
                         ),
                       )
                       .toList(),
-              backgroundImage: snapshot.data!.items.isNotEmpty ? snapshot.data!.items[0] : null,
+              backgroundImage:
+                  snapshot.data!.items.isNotEmpty
+                      ? game.plotService.getNPC(snapshot.data!.items[0])?.image
+                      : null,
               leftImage: snapshot.data!.npc,
               rightImage: null,
             ),

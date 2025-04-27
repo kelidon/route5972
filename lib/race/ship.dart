@@ -13,8 +13,8 @@ class Ship extends BodyComponent<MainGame> {
 
   final size = const Size(6, 10);
   final scale = 10.0;
-  final _speedDiff = 1000.0;
-  final _forceDiff = 10000.0;
+  final _rotationSpeedDiff = 500.0;
+  final _linearSpeedDiff = 10000.0;
 
   final vertices = <Vector2>[
     Vector2(1.5, -4.0),
@@ -71,7 +71,7 @@ class Ship extends BodyComponent<MainGame> {
     final body =
         world.createBody(def)
           ..userData = this
-          ..angularDamping = 3.0
+          ..angularDamping = 2.0
           ..linearDamping = 0.2
           ..linearVelocity = Vector2.zero()
           ..angularVelocity = 0.0;
@@ -99,19 +99,19 @@ class Ship extends BodyComponent<MainGame> {
 
   void _updateFlight(double dt) {
     if (pressedKeys.contains(LogicalKeyboardKey.arrowUp)) {
-      body.applyForce(body.worldVector(Vector2(0.0, -1.0))..scale(_forceDiff * dt));
+      body.applyForce(body.worldVector(Vector2(0.0, -1.0))..scale(_linearSpeedDiff * dt));
     }
     if (pressedKeys.contains(LogicalKeyboardKey.arrowDown)) {
-      body.applyForce(body.worldVector(Vector2(0.0, 1.0))..scale(_forceDiff * dt));
+      body.applyForce(body.worldVector(Vector2(0.0, 1.0))..scale(_linearSpeedDiff * dt));
     }
   }
 
   void _updateRotation(double dt) {
     if (pressedKeys.contains(LogicalKeyboardKey.arrowLeft)) {
-      body.applyAngularImpulse(-_speedDiff * dt);
+      body.applyAngularImpulse(-_rotationSpeedDiff * dt);
     }
     if (pressedKeys.contains(LogicalKeyboardKey.arrowRight)) {
-      body.applyAngularImpulse(_speedDiff * dt);
+      body.applyAngularImpulse(_rotationSpeedDiff * dt);
     }
   }
 

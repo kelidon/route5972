@@ -1,4 +1,5 @@
 import 'package:flame/components.dart';
+import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/services.dart';
 import 'package:route5972/common/mixin/scene_transition_mixin.dart';
 import 'package:route5972/main_game.dart';
@@ -45,6 +46,13 @@ class RacingScene extends RectangleComponent
 
     game.world.add(RacingSceneBackground());
     game.world.add(ship);
+
+    final component = await TiledComponent.load(
+      'testmap.tmx',
+      Vector2.all(32),
+    );
+
+    game.world.add(component);
   }
 
   @override
