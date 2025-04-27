@@ -13,7 +13,7 @@ class BarScene extends RectangleComponent with HasGameReference<MainGame>, Scene
 
     await add(
       InteractiveMap(
-        backgroundImage: 'bar.jpg',
+        backgroundImage: 'bar.png',
         interactiveItems: [
           //todo add more items
           InteractiveItem(

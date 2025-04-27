@@ -7,7 +7,7 @@ class TerminalScene extends Component {
   Future<void> onLoad() async {
     add(
       InteractiveMap(
-        backgroundImage: 'bar.jpg',
+        backgroundImage: 'aero_terminal.png',
         interactiveItems: [
           //todo add more items
           InteractiveItem(

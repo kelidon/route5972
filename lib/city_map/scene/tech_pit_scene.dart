@@ -7,7 +7,7 @@ class TechPitScene extends Component {
   Future<void> onLoad() async {
     add(
       InteractiveMap(
-        backgroundImage: 'bar.jpg',
+        backgroundImage: '404_tech_pit.png',
         interactiveItems: [
           //todo add more items
           InteractiveItem(

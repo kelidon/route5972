@@ -1,7 +1,7 @@
 import 'package:flame/components.dart';
-import 'package:route5972/common/mixin/scene_transition_mixin.dart';
 import 'package:route5972/city_map/model/interactive_item.dart';
 import 'package:route5972/city_map/model/interactive_map.dart';
+import 'package:route5972/common/mixin/scene_transition_mixin.dart';
 import 'package:route5972/main_game.dart';
 
 class CityMapScene extends RectangleComponent
@@ -32,8 +32,10 @@ class CityMapScene extends RectangleComponent
             size: Vector2.all(48),
             name: '404 Tech Pit',
             image: 'location.png',
-            onTap: () {
-              //todo переход
+            onTap: () async {
+              await fadeOut(() {
+                game.router.pushNamed(MainGame.techPit);
+              });
             },
           ),
           InteractiveItem(
@@ -41,8 +43,10 @@ class CityMapScene extends RectangleComponent
             size: Vector2.all(48),
             name: 'Aero-Gate Vector 9',
             image: 'location.png',
-            onTap: () {
-              //todo переход
+            onTap: () async {
+              await fadeOut(() {
+                game.router.pushNamed(MainGame.terminal);
+              });
             },
           ),
         ],
