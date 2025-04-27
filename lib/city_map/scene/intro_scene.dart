@@ -33,11 +33,12 @@ class IntroScene extends RectangleComponent
       CButtonComp(
         content: 'FadeOut',
         onPressed: () async {
-          await audio.fadeOutCurrent();
-          print('faded');
+          audio.fadeOutCurrent();
+          await nextPage();
         },
       ),
     );
+
     _updateLayout();
 
     return super.onLoad();
