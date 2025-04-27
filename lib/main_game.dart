@@ -11,8 +11,9 @@ import 'package:route5972/plot/model/dialog_data.dart';
 import 'package:route5972/plot/plot_service.dart';
 import 'package:route5972/race/racing_scene.dart';
 
-class MainGame extends Forge2DGame
-    with TapDetector, HasKeyboardHandlerComponents {
+const dialogOverlayIdentifier = 'dialogOverlay';
+
+class MainGame extends Forge2DGame with TapDetector, HasKeyboardHandlerComponents {
   late final RouterComponent router;
 
   static const String map = 'map';
@@ -23,11 +24,7 @@ class MainGame extends Forge2DGame
   static const String intro = 'intro';
   static const String audioSwitch = 'audioSwitch';
 
-  static const dialogOverlayIdentifier = 'dialogOverlay';
-
   final PlotService plotService = PlotService();
-
-  DialogData? currentDialog;
 
   @override
   Future<void> onLoad() async {
@@ -49,15 +46,15 @@ class MainGame extends Forge2DGame
     await plotService.loadData();
   }
 
-  void showDialog(DialogData dialogData) {
-    overlays.remove(dialogOverlayIdentifier);
+  void showDialog(DialogData data) {
+    plotService.showDialog(data);
 
-    currentDialog = dialogData;
+    if (overlays.isActive(dialogOverlayIdentifier)) {
+      return;
+    }
+
     overlays.add(dialogOverlayIdentifier);
   }
 
-  void hideDialog() {
-    overlays.remove(dialogOverlayIdentifier);
-    currentDialog = null;
-  }
+  void hideDialog() => overlays.remove(dialogOverlayIdentifier);
 }

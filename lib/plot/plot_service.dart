@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:route5972/plot/model/dialog_data.dart';
 import 'package:route5972/plot/model/npc_data.dart';
 import 'package:route5972/plot/plot_data_manager.dart';
@@ -10,6 +12,15 @@ class PlotService {
   final Set<String> inventory = {};
 
   Future<void> loadData() => _repo.loadData();
+
+  final StreamController<DialogData> _currentDialogController =
+      StreamController<DialogData>.broadcast();
+
+  Stream<DialogData>? get currentDialogStream => _currentDialogController.stream;
+
+  void showDialog(DialogData data) {
+    _currentDialogController.add(data);
+  }
 
   DialogData? getNPCDialog(String npcId) {
     final dialogId = _dataManager.getDialogIdByNPC(npcId, inventory.toList());
