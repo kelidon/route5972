@@ -4,7 +4,8 @@ import 'package:route5972/city_map/model/interactive_map.dart';
 import 'package:route5972/common/mixin/scene_transition_mixin.dart';
 import 'package:route5972/main_game.dart';
 
-class BarScene extends RectangleComponent with HasGameReference<MainGame>, SceneTransitionMixin {
+class BarScene extends RectangleComponent
+    with HasGameReference<MainGame>, SceneTransitionMixin {
   @override
   Future<void> onLoad() async {
     size = game.size;
@@ -22,13 +23,14 @@ class BarScene extends RectangleComponent with HasGameReference<MainGame>, Scene
             name: 'Bartender',
             image: 'npc.png',
             onTap: () async {
-              final dialog = game.plotService.getNPCDialog('npc1');
+              game.router.pushReplacementNamed(MainGame.map);
+              // final dialog = game.plotService.getNPCDialog('npc1');
 
-              if (dialog == null) {
-                return;
-              }
+              // if (dialog == null) {
+              //   return;
+              // }
 
-              game.showDialog(dialog);
+              // game.showDialog(dialog);
             },
           ),
         ],

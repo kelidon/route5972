@@ -22,8 +22,8 @@ class CityMapScene extends RectangleComponent
             name: 'The Broken Comet Bar',
             image: 'location.png',
             onTap: () async {
-              await fadeOut(() {
-                game.router.pushNamed(MainGame.bar);
+              fadeOut(() {
+                game.router.pushReplacementNamed(MainGame.bar);
               });
             },
           ),

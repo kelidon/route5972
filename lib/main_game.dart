@@ -11,7 +11,8 @@ import 'package:route5972/plot/model/dialog_data.dart';
 import 'package:route5972/plot/plot_service.dart';
 import 'package:route5972/race/racing_scene.dart';
 
-class MainGame extends Forge2DGame with TapDetector, HasKeyboardHandlerComponents {
+class MainGame extends Forge2DGame
+    with TapDetector, HasKeyboardHandlerComponents {
   late final RouterComponent router;
 
   static const String map = 'map';
@@ -33,13 +34,13 @@ class MainGame extends Forge2DGame with TapDetector, HasKeyboardHandlerComponent
     router = RouterComponent(
       initialRoute: audioSwitch,
       routes: {
-        map: Route(CityMapScene.new),
-        bar: Route(BarScene.new),
-        techPit: Route(TechPitScene.new),
-        terminal: Route(TerminalScene.new),
-        race: Route(RacingScene.new),
-        audioSwitch: Route(AudioSwitchScene.new),
-        intro: Route(IntroScene.new),
+        map: Route(CityMapScene.new, maintainState: false),
+        bar: Route(BarScene.new, maintainState: false),
+        techPit: Route(TechPitScene.new, maintainState: false),
+        terminal: Route(TerminalScene.new, maintainState: false),
+        race: Route(RacingScene.new, maintainState: false),
+        audioSwitch: Route(AudioSwitchScene.new, maintainState: false),
+        intro: Route(IntroScene.new, maintainState: false),
       },
     );
 
