@@ -11,18 +11,18 @@ class IntroScene extends RectangleComponent
     with HasGameReference<MainGame>, SceneTransitionMixin {
   late RectangleComponent parentRect;
 
-  // Future<void> nextPage() async {
-  //   await fadeOut(() {
-  //     game.router.pushReplacementNamed(MainGame.map);
-  //   });
-  // }
+  Future<void> nextPage() async {
+    await fadeOut(() {
+      game.router.pushReplacementNamed(MainGame.map);
+    });
+  }
 
   @override
   Future<void> onLoad() async {
     size = game.size;
     paint = Paint()..color = Color(0xFF000000);
+    await fadeIn();
     audio.music(Music.intro);
-    fadeIn();
     parentRect = RectangleComponent(
       size: game.size,
       paint: Paint()..color = Color(0xFF000000),
@@ -32,8 +32,9 @@ class IntroScene extends RectangleComponent
     add(
       CButtonComp(
         content: 'FadeOut',
-        onPressed: () {
-          audio.fadeOutCurrent();
+        onPressed: () async {
+          await audio.fadeOutCurrent();
+          print('faded');
         },
       ),
     );

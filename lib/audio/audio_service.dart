@@ -46,22 +46,27 @@ class AudioService {
 
   Future<void> fadeOutCurrent() async {
     if (!enabled) return;
-    Timer.periodic(Duration(milliseconds: 100), (me) async {
+    final completer = Completer<void>();
+    Timer.periodic(Duration(milliseconds: 10), (me) async {
       if (_currentVolume <= 0) {
         _currentVolume = 0;
         me.cancel();
         await FlameAudio.bgm.audioPlayer.stop();
+        FlameAudio.bgm.isPlaying = false;
+        completer.complete();
       } else {
-        _currentVolume = max(0, _currentVolume - 0.1);
+        _currentVolume = max(0, _currentVolume - 0.01);
         await FlameAudio.bgm.audioPlayer.setVolume(_currentVolume);
       }
     });
+    return completer.future;
   }
 
   Future<void> music(Music m) async {
     if (!enabled) return;
     await FlameAudio.bgm.audioPlayer.setSourceAsset(m.path);
     await FlameAudio.bgm.audioPlayer.setReleaseMode(ReleaseMode.release);
+    FlameAudio.bgm.isPlaying = true;
     await FlameAudio.bgm.audioPlayer.resume();
     await FlameAudio.bgm.audioPlayer.onPlayerComplete.first;
     return music(m);
