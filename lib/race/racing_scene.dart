@@ -23,17 +23,12 @@ class RacingScene extends RectangleComponent
   late Map<LogicalKeyboardKey, LogicalKeyboardKey> activeKeyMap;
   late Set<LogicalKeyboardKey> pressedKeySet;
   late final Ship ship;
-  double _timeCounter = 0;
+
   bool isGameOver = false;
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    start();
-  }
-
-  Future<void> start() async {
-    isGameOver = false;
 
     pressedKeySet = {};
     activeKeyMap = controlKeys;
@@ -75,7 +70,6 @@ class RacingScene extends RectangleComponent
     if (isGameOver) {
       return;
     }
-    _timeCounter += dt;
   }
 
   @override
@@ -89,7 +83,7 @@ class RacingScene extends RectangleComponent
       if (activeKeyMap.containsKey(key)) {
         pressedKeySet.add(activeKeyMap[key]!);
 
-        print('pressed ${activeKeyMap[key]}');
+        //print('pressed ${activeKeyMap[key]}');
       }
     }
     return true;
@@ -97,28 +91,5 @@ class RacingScene extends RectangleComponent
 
   void _clearPressedKeys() {
     pressedKeySet.clear();
-  }
-
-  void reset() {
-    _clearPressedKeys();
-    activeKeyMap.clear();
-    _timeCounter = 0;
-
-    ship.removeFromParent();
-
-    for (final camera in children.query<CameraComponent>()) {
-      camera.removeFromParent();
-    }
-  }
-
-  String _numPrefix(int num) {
-    return num < 10 ? '0$num' : num.toString();
-  }
-
-  String get timeValue {
-    final minutes = _numPrefix((_timeCounter / 60).floor());
-    final seconds = _numPrefix((_timeCounter % 60).floor());
-    final ms = _numPrefix(((_timeCounter % 1) * 100).floor());
-    return [minutes, seconds, ms].join(':');
   }
 }
