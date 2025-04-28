@@ -18,17 +18,6 @@ class TechPitScene extends RectangleComponent
       InteractiveMap(
         backgroundImage: '404_tech_pit.png',
         interactiveItems: [
-          //todo add more items
-          InteractiveItem(
-            position: Vector2(100, 180),
-            size: Vector2.all(48),
-            name: 'Mechanic',
-            image: 'npc.png',
-            onTap: () {
-              //todo
-              print('talk to mechanic');
-            },
-          ),
           BackButtonComponent(
             onBack: () => fadeOut(
               () => game.router.pushReplacementNamed(MainGame.map),

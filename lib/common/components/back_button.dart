@@ -20,7 +20,7 @@ class BackButtonComponent extends Component with HasGameReference<MainGame> {
         position: buttonPosition,
         size: Vector2.all(48),
         name: 'Exit',
-        image: 'npc.png',
+        image: 'npc1.png',
         onTap: onBack,
       ),
     );

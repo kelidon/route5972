@@ -3,15 +3,15 @@
     "id": "npc1",
     "name": "Taria",
     "description": "racer",
-    "image": "assets/images/taria.png",
-    "smallImage": "assets/images/taria_small.png"
+    "image": "assets/images/npc1.png",
+    "smallImage": "assets/images/npc1_small.png"
   },
   {
     "id": "npc2",
     "name": "DJ-X99",
     "description": "dj-robot",
-    "image": "assets/images/dj-x99.png",
-    "smallImage": "assets/images/dj-x99_small.png"
+    "image": "assets/images/npc2.png",
+    "smallImage": "assets/images/npc2_small.png"
   },
   {
     "id": "npc3",

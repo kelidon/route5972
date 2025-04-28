@@ -19,16 +19,6 @@ class TerminalScene extends RectangleComponent
       InteractiveMap(
         backgroundImage: 'aero_terminal.png',
         interactiveItems: [
-          InteractiveItem(
-            position: Vector2(100, 180),
-            size: Vector2.all(48),
-            name: 'Agent',
-            image: 'npc.png',
-            onTap: () {
-              //todo
-              print('talk to agent');
-            },
-          ),
           BackButtonComponent(
               onBack: () => fadeOut(
                   () => game.router.pushReplacementNamed(MainGame.map))),

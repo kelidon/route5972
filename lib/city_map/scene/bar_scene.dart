@@ -17,12 +17,27 @@ class BarScene extends RectangleComponent
       InteractiveMap(
         backgroundImage: 'bar.png',
         interactiveItems: [
-          //todo add more items
+
           InteractiveItem(
-            position: Vector2(100, 180),
+            position: Vector2(game.size.x*0.8, game.size.y*0.5),
             size: Vector2.all(48),
             name: 'Bartender',
-            image: 'npc.png',
+            image: 'npc2.png',
+            onTap: () async {
+              final dialog = game.plotService.getNPCDialog('npc2');
+
+              if (dialog == null) {
+                return;
+              }
+
+              game.showDialog(dialog);
+            },
+          ),
+          InteractiveItem(
+            position: Vector2(game.size.x*0.2, game.size.y*0.7),
+            size: Vector2.all(48),
+            name: 'Taria',
+            image: 'npc1.png',
             onTap: () async {
               final dialog = game.plotService.getNPCDialog('npc1');
 

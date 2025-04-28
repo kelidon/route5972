@@ -24,7 +24,7 @@ class Wall extends BodyComponent {
   @override
   void render(Canvas canvas) {
     final paint = Paint()
-      ..color = Colors.white
+      ..color = Colors.transparent
       ..strokeWidth = 4
       ..style = PaintingStyle.stroke;
 

@@ -12,7 +12,7 @@ class NPCImage extends StatelessWidget {
       ),
       child: Align(
         alignment: Alignment.topCenter,
-        child: Image.asset('assets/images/npc.png'),
+        child: Image.asset('assets/images/npc1.png'),
       ),
     );
   }
