@@ -1,6 +1,7 @@
 import 'package:flame/components.dart';
-import 'package:route5972/city_map/model/interactive_item.dart';
-import 'package:route5972/city_map/model/interactive_map.dart';
+import 'package:route5972/common/components/back_button.dart';
+import 'package:route5972/common/components/interactive_item.dart';
+import 'package:route5972/common/components/interactive_map.dart';
 import 'package:route5972/common/mixin/scene_transition_mixin.dart';
 import 'package:route5972/main_game.dart';
 
@@ -32,6 +33,9 @@ class BarScene extends RectangleComponent
               game.showDialog(dialog);
             },
           ),
+          BackButtonComponent(
+              onBack: () => fadeOut(
+                  () => game.router.pushReplacementNamed(MainGame.map))),
         ],
       ),
     );

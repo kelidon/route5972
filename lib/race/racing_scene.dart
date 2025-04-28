@@ -1,6 +1,8 @@
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/services.dart';
+import 'package:route5972/common/components/back_button.dart';
+import 'package:route5972/common/components/interactive_item.dart';
 import 'package:route5972/common/mixin/scene_transition_mixin.dart';
 import 'package:route5972/main_game.dart';
 import 'package:route5972/race/ship.dart';
@@ -49,6 +51,12 @@ class RacingScene extends RectangleComponent
     game.world.add(map);
 
     addWalls(map);
+
+    await add(
+       BackButtonComponent(
+              onBack: () => fadeOut(
+                  () => game.router.pushReplacementNamed(MainGame.bar))),
+    );
   }
 
   void addWalls(TiledComponent component) {

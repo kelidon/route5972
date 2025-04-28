@@ -11,21 +11,25 @@ class CButtonComp extends ButtonComponent with HoverCallbacks {
   CButtonComp({
     required this.content,
     required super.onPressed,
+    this.width = 200,
+    this.enableAnimation = true,
     super.anchor,
     super.position,
   });
 
   final String content;
+  final double width;
+  final bool enableAnimation;
 
   @override
   FutureOr<void> onLoad() {
     button = CTextBoxComp(
       text: content,
       boxConfig: TextBoxConfig(
-        maxWidth: 200,
+        maxWidth: width,
         margins: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
         growingBox: true,
-        timePerChar: 0.1,
+        timePerChar: enableAnimation ? 0.1 : 0,
       ),
     );
     return super.onLoad();
@@ -33,18 +37,12 @@ class CButtonComp extends ButtonComponent with HoverCallbacks {
 
   @override
   void onHoverEnter() {
-    add(ScaleEffect.to(
-      Vector2(1.05, 1.05),
-      EffectController(duration: 0.05),
-    ));
+    add(ScaleEffect.to(Vector2(1.05, 1.05), EffectController(duration: 0.05)));
   }
 
   @override
   void onHoverExit() {
-    add(ScaleEffect.to(
-      Vector2(1, 1),
-      EffectController(duration: 0.05),
-    ));
+    add(ScaleEffect.to(Vector2(1, 1), EffectController(duration: 0.05)));
   }
 }
 
@@ -66,7 +64,7 @@ class CTextBoxComp extends TextBoxComponent {
     super.textRenderer = textRenderer;
   }
 
-  final bgPaint = Paint();
+  final bgPaint = Paint()..color = Color(0xFF000000);
   final borderPaint = Paint()
     ..color = Color(0xFFFFFFFF).withOpacity(0.5)
     ..style = PaintingStyle.stroke
