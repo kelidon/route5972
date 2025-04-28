@@ -12,9 +12,12 @@ class NPCImage extends StatelessWidget {
         maxWidth: MediaQuery.sizeOf(context).width * 0.3,
         maxHeight: MediaQuery.sizeOf(context).height * 0.45,
       ),
-      child: Align(
-        alignment: Alignment.topCenter,
-        child: Image.asset(imagePath),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 32),
+        child: Align(
+          alignment: Alignment.bottomLeft,
+          child: Image.asset(imagePath),
+        ),
       ),
     );
   }

@@ -120,7 +120,7 @@
   },
   {
     "id": "loc1-char2-1",
-    "npc": "npc1",
+    "npc": "npc2",
     "text": "DJ-X99: Vibe detected. Rage in the mix. Step closer, human. I’ve got beats and burn — pick your poison.\n[[Are you a DJ or a philosopher?|loc1-char2-2]]",
     "items": [],
     "options": [

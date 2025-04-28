@@ -22,7 +22,7 @@ class BarScene extends RectangleComponent
         interactiveItems: [
 
           InteractiveItem(
-            position: Vector2(game.size.x*0.8, game.size.y*0.5),
+            position: Vector2(game.size.x*0.7, game.size.y*0.48),
             size: Vector2.all(88),
             name: 'Bartender',
             image: 'npc2.png',
@@ -37,7 +37,7 @@ class BarScene extends RectangleComponent
             },
           ),
           InteractiveItem(
-            position: Vector2(game.size.x*0.2, game.size.y*0.7),
+            position: Vector2(game.size.x*0.15, game.size.y*0.6),
             size: Vector2.all(88),
             name: 'Taria',
             image: 'npc1.png',
