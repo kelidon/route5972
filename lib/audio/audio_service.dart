@@ -18,7 +18,8 @@ enum Sfxs {
 enum Music {
   intro0('intro0'),
   intro1('intro1'),
-  bar('bar', variations: 3);
+  bar('bar', variations: 3),
+  race('race');
 
   final int? variations;
   final String name;

@@ -18,7 +18,7 @@ class AudioSwitchScene extends RectangleComponent
 
   Future<void> nextPage() async {
     await fadeOut(() {
-      game.router.pushReplacementNamed(MainGame.intro);
+      game.router.pushReplacementNamed(MainGame.map);
     });
   }
 
@@ -26,7 +26,7 @@ class AudioSwitchScene extends RectangleComponent
   Future<void> onLoad() async {
     size = game.size;
     paint = Paint()..color = Color(0xFF000000);
-    
+
     parentRect = RectangleComponent(
       size: game.size,
       paint: Paint()..color = Color(0xFF000000),

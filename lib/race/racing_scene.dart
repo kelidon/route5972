@@ -1,6 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/services.dart';
+import 'package:route5972/audio/audio_service.dart';
 import 'package:route5972/common/components/back_button.dart';
 import 'package:route5972/common/components/interactive_item.dart';
 import 'package:route5972/common/mixin/scene_transition_mixin.dart';
@@ -31,6 +32,7 @@ class RacingScene extends RectangleComponent
   @override
   Future<void> onLoad() async {
     await super.onLoad();
+    audio.music(Music.race);
     start();
   }
 

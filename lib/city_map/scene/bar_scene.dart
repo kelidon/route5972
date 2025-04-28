@@ -1,4 +1,5 @@
 import 'package:flame/components.dart';
+import 'package:route5972/audio/audio_service.dart';
 import 'package:route5972/common/components/back_button.dart';
 import 'package:route5972/common/components/interactive_item.dart';
 import 'package:route5972/common/components/interactive_map.dart';
@@ -12,6 +13,8 @@ class BarScene extends RectangleComponent
     size = game.size;
     position = Vector2.zero();
     opacity = 0.0;
+
+    audio.music(Music.bar);
 
     await add(
       InteractiveMap(
@@ -44,13 +47,15 @@ class BarScene extends RectangleComponent
               if (dialog == null) {
                 return;
               }
-
               game.showDialog(dialog);
             },
           ),
           BackButtonComponent(
-              onBack: () => fadeOut(
-                  () => game.router.pushReplacementNamed(MainGame.map))),
+            onBack: () => fadeOut(() {
+              audio.fadeOutCurrent();
+              game.router.pushReplacementNamed(MainGame.map);
+            }),
+          ),
         ],
       ),
     );

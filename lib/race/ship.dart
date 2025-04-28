@@ -16,8 +16,8 @@ class Ship extends BodyComponent<MainGame> {
   }) : super(priority: 3, paint: Paint()..color = Colors.green);
 
   final size = Size(32, 32);
-  final _rotationSpeedDiff = 500.0;
-  final _linearSpeedDiff = 10000.0;
+  final _rotationSpeedDiff = 250000.0;
+  final _linearSpeedDiff = 1000000.0;
   final Vector2 startingPoint;
 
   final Set<LogicalKeyboardKey> pressedKeys;
