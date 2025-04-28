@@ -36,13 +36,7 @@ class DialogStreamWidget extends StatelessWidget {
                       }
                       if (e.nextNode.type == 'race') {
                         game.hideDialog();
-                        game.router
-                            .pushReplacementNamed(switch (e.nextNode.id) {
-                          'loc1' => MainGame.bar,
-                          'loc2' => MainGame.techPit,
-                          'loc3' => MainGame.terminal,
-                          _ => MainGame.map,
-                        });
+                        game.router.pushReplacementNamed(MainGame.race);
                         return;
                       }
                       if (e.nextNode.type == 'dialog') {
