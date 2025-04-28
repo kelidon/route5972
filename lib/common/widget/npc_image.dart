@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
 class NPCImage extends StatelessWidget {
-  const NPCImage({super.key});
+  final String imagePath;
+
+  const NPCImage({super.key, required this.imagePath});
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-        maxWidth: MediaQuery.sizeOf(context).width * 0.2,
-        maxHeight: MediaQuery.sizeOf(context).height * 0.35,
+        maxWidth: MediaQuery.sizeOf(context).width * 0.3,
+        maxHeight: MediaQuery.sizeOf(context).height * 0.45,
       ),
       child: Align(
         alignment: Alignment.topCenter,
-        child: Image.asset('assets/images/npc1.png'),
+        child: Image.asset(imagePath),
       ),
     );
   }
