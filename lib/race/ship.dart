@@ -14,55 +14,21 @@ class Ship extends BodyComponent<MainGame> {
     required this.startingPoint,
   }) : super(priority: 3, paint: Paint()..color = Colors.green);
 
-  final size = const Size(6, 10);
-  final scale = 10.0;
+  final size = Size(32, 32);
   final _rotationSpeedDiff = 500.0;
   final _linearSpeedDiff = 10000.0;
   final Vector2 startingPoint;
-
-  final vertices = <Vector2>[
-    Vector2(1.5, -4.0),
-    Vector2(1.0, 4.0),
-    Vector2(-1.0, 4.0),
-    Vector2(-1.5, -4.0),
-  ];
 
   final Set<LogicalKeyboardKey> pressedKeys;
   final CameraComponent cameraComponent;
 
   late final Image _image;
 
-  late final _renderPosition = -size.toOffset() / 2;
-  late final _scaledRect = (size * scale).toRect();
-  late final _renderRect = _renderPosition & size;
-
   @override
   Future<void> onLoad() async {
     await super.onLoad();
 
-    final recorder = PictureRecorder();
-    final canvas = Canvas(recorder, _scaledRect);
-    final path = Path();
-    final bodyPaint = Paint()..color = paint.color;
-    for (var i = 0.0; i < _scaledRect.width / 4; i++) {
-      bodyPaint.color = bodyPaint.color.darken(0.1);
-      path.reset();
-      final offsetVertices = vertices
-          .map(
-            (v) =>
-                v.toOffset() * scale -
-                Offset(i * v.x.sign, i * v.y.sign) +
-                _scaledRect.bottomRight / 2,
-          )
-          .toList();
-      path.addPolygon(offsetVertices, true);
-      canvas.drawPath(path, bodyPaint);
-    }
-    final picture = recorder.endRecording();
-    _image = await picture.toImage(
-      _scaledRect.width.toInt(),
-      _scaledRect.height.toInt(),
-    );
+    _image = await Flame.images.load('player.png');
   }
 
   @override
@@ -78,10 +44,12 @@ class Ship extends BodyComponent<MainGame> {
       ..linearVelocity = Vector2.zero()
       ..angularVelocity = 0.0;
 
-    final shape = PolygonShape()..set(vertices);
-    final fixtureDef = FixtureDef(shape)
-      ..density = 0.15
-      ..restitution = 0.2;
+    final shape = PolygonShape()..setAsBox(size.width, size.height, Vector2.zero(), 0.0);
+
+    final fixtureDef =
+        FixtureDef(shape)
+          ..density = 0.15
+          ..restitution = 0.2;
 
     body.createFixture(fixtureDef);
 
@@ -122,7 +90,13 @@ class Ship extends BodyComponent<MainGame> {
 
   @override
   void render(Canvas canvas) {
-    canvas.drawImageRect(_image, _scaledRect, _renderRect, paint);
+    final position = body.position - Vector2(size.width / 2, size.height / 2);
+    canvas.drawImageRect(
+      _image,
+      Rect.fromLTWH(0, 0, size.width, size.height),
+      Rect.fromLTWH(0, 0, size.width, size.height),
+      paint,
+    );
   }
 
   @override
