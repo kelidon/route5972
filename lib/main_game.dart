@@ -29,7 +29,7 @@ class MainGame extends Forge2DGame with TapDetector, HasKeyboardHandlerComponent
   @override
   Future<void> onLoad() async {
     router = RouterComponent(
-      initialRoute: bar,
+      initialRoute: race,
       routes: {
         map: Route(CityMapScene.new, maintainState: false),
         bar: Route(BarScene.new, maintainState: false),

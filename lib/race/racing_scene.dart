@@ -19,7 +19,6 @@ final Map<LogicalKeyboardKey, LogicalKeyboardKey> controlKeys = {
 
 class RacingScene extends RectangleComponent
     with HasGameReference<MainGame>, KeyboardHandler, SceneTransitionMixin {
-  static final Vector2 mapSize = Vector2.all(500);
   static const double playZoom = 1;
   late Map<LogicalKeyboardKey, LogicalKeyboardKey> activeKeyMap;
   late Set<LogicalKeyboardKey> pressedKeySet;
@@ -44,7 +43,6 @@ class RacingScene extends RectangleComponent
     game.camera.viewfinder.zoom = playZoom;
     game.camera.viewfinder.anchor = Anchor.center;
 
-    //game.world.add(RacingSceneBackground());
     game.world.add(ship);
 
     final map = await TiledComponent.load('map.tmx', Vector2.all(32));
@@ -60,10 +58,13 @@ class RacingScene extends RectangleComponent
     for (final obj in objectGroup!.objects) {
       if (obj.isPolyline) {
         final points = obj.polyline;
+        // Calculate absolute positions by adding object's position to each point
+        final absolutePoints = points.map((p) => Vector2(
+              obj.x + p.x,
+              obj.y + p.y,
+            )).toList();
 
-        final absolutePoints = points.map((p) => Vector2(p.x, p.y)).toList();
-
-        game.world.add(Wall(absolutePoints, game.size));
+        game.world.add(Wall(absolutePoints));
       }
     }
   }
