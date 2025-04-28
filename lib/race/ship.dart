@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flame/camera.dart';
 import 'package:flame/extensions.dart';
+import 'package:flame/flame.dart';
 import 'package:flame_forge2d/flame_forge2d.dart' hide Particle, World;
 import 'package:flutter/material.dart' hide Image, Gradient;
 import 'package:flutter/services.dart';
