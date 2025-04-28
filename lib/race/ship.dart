@@ -9,15 +9,12 @@ import 'package:flutter/services.dart';
 import 'package:route5972/main_game.dart';
 
 class Ship extends BodyComponent<MainGame> {
-  Ship({
-    required this.pressedKeys,
-    required this.cameraComponent,
-    required this.startingPoint,
-  }) : super(priority: 3, paint: Paint()..color = Colors.green);
+  Ship({required this.pressedKeys, required this.cameraComponent, required this.startingPoint})
+    : super(priority: 3, paint: Paint()..color = Colors.green);
 
-  final size = Size(32, 32);
-  final _rotationSpeedDiff = 250000.0;
-  final _linearSpeedDiff = 1000000.0;
+  final size = Size(17, 30);
+  final _rotationSpeedDiff = 30000.0;
+  final _linearSpeedDiff = 400000.0;
   final Vector2 startingPoint;
 
   final Set<LogicalKeyboardKey> pressedKeys;
@@ -34,22 +31,29 @@ class Ship extends BodyComponent<MainGame> {
 
   @override
   Body createBody() {
-    final def = BodyDef()
-      ..type = BodyType.dynamic
-      ..position = startingPoint
-      ..gravityOverride = Vector2.zero();
-    final body = world.createBody(def)
-      ..userData = this
-      ..angularDamping = 2.0
-      ..linearDamping = 0.2
-      ..linearVelocity = Vector2.zero()
-      ..angularVelocity = 0.0;
+    final def =
+        BodyDef()
+          ..type = BodyType.dynamic
+          ..position = startingPoint
+          ..gravityOverride = Vector2.zero();
+    final body =
+        world.createBody(def)
+          ..userData = this
+          ..angularDamping = 2.0
+          ..linearDamping = 0.2
+          ..linearVelocity = Vector2.zero()
+          ..angularVelocity = 0.0;
 
-    final shape = PolygonShape()..setAsBox(size.width, size.height, Vector2.zero(), 0.0);
+    final shape =
+        PolygonShape()..set([
+          Vector2(-size.width / 2, size.height / 2),
+          Vector2(size.width / 2, size.height / 2),
+          Vector2(0.0, -size.height / 2),
+        ]);
 
     final fixtureDef =
         FixtureDef(shape)
-          ..density = 0.15
+          ..density = 0.1
           ..restitution = 0.2;
 
     body.createFixture(fixtureDef);
@@ -69,14 +73,10 @@ class Ship extends BodyComponent<MainGame> {
 
   void _updateFlight(double dt) {
     if (pressedKeys.contains(LogicalKeyboardKey.arrowUp)) {
-      body.applyForce(
-        body.worldVector(Vector2(0.0, -1.0))..scale(_linearSpeedDiff * dt),
-      );
+      body.applyForce(body.worldVector(Vector2(0.0, -1.0))..scale(_linearSpeedDiff * dt));
     }
     if (pressedKeys.contains(LogicalKeyboardKey.arrowDown)) {
-      body.applyForce(
-        body.worldVector(Vector2(0.0, 1.0))..scale(_linearSpeedDiff * dt),
-      );
+      body.applyForce(body.worldVector(Vector2(0.0, 1.0))..scale(_linearSpeedDiff * dt));
     }
   }
 
@@ -91,11 +91,15 @@ class Ship extends BodyComponent<MainGame> {
 
   @override
   void render(Canvas canvas) {
-    final position = body.position - Vector2(size.width / 2, size.height / 2);
     canvas.drawImageRect(
       _image,
-      Rect.fromLTWH(0, 0, size.width, size.height),
-      Rect.fromLTWH(0, 0, size.width, size.height),
+      Rect.fromLTWH(0, 0, _image.width.toDouble(), _image.height.toDouble()), // Source rect
+      Rect.fromLTWH(
+        -8.5,
+        -14,
+        size.width,
+        size.height,
+      ), // Destination rect centered on the body
       paint,
     );
   }

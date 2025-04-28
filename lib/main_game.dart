@@ -13,8 +13,7 @@ import 'package:route5972/race/racing_scene.dart';
 
 const dialogOverlayIdentifier = 'dialogOverlay';
 
-class MainGame extends Forge2DGame
-    with TapDetector, HasKeyboardHandlerComponents {
+class MainGame extends Forge2DGame with TapDetector, HasKeyboardHandlerComponents {
   late final RouterComponent router;
 
   static const String map = 'map';
@@ -30,7 +29,7 @@ class MainGame extends Forge2DGame
   @override
   Future<void> onLoad() async {
     router = RouterComponent(
-      initialRoute: audioSwitch,
+      initialRoute: race,
       routes: {
         map: Route(CityMapScene.new, maintainState: false),
         bar: Route(BarScene.new, maintainState: false),
