@@ -24,7 +24,7 @@ class _DialogContentState extends State<DialogContent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.sizeOf(context).height * 0.2,
+      height: MediaQuery.sizeOf(context).height * 0.28,
       width: double.infinity,
       decoration: BoxDecoration(
         boxShadow: [

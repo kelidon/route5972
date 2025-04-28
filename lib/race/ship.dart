@@ -8,13 +8,17 @@ import 'package:flutter/services.dart';
 import 'package:route5972/main_game.dart';
 
 class Ship extends BodyComponent<MainGame> {
-  Ship({required this.pressedKeys, required this.cameraComponent})
-    : super(priority: 3, paint: Paint()..color = Colors.green);
+  Ship({
+    required this.pressedKeys,
+    required this.cameraComponent,
+    required this.startingPoint,
+  }) : super(priority: 3, paint: Paint()..color = Colors.green);
 
   final size = const Size(6, 10);
   final scale = 10.0;
   final _rotationSpeedDiff = 500.0;
   final _linearSpeedDiff = 10000.0;
+  final Vector2 startingPoint;
 
   final vertices = <Vector2>[
     Vector2(1.5, -4.0),
@@ -43,44 +47,41 @@ class Ship extends BodyComponent<MainGame> {
     for (var i = 0.0; i < _scaledRect.width / 4; i++) {
       bodyPaint.color = bodyPaint.color.darken(0.1);
       path.reset();
-      final offsetVertices =
-          vertices
-              .map(
-                (v) =>
-                    v.toOffset() * scale -
-                    Offset(i * v.x.sign, i * v.y.sign) +
-                    _scaledRect.bottomRight / 2,
-              )
-              .toList();
+      final offsetVertices = vertices
+          .map(
+            (v) =>
+                v.toOffset() * scale -
+                Offset(i * v.x.sign, i * v.y.sign) +
+                _scaledRect.bottomRight / 2,
+          )
+          .toList();
       path.addPolygon(offsetVertices, true);
       canvas.drawPath(path, bodyPaint);
     }
     final picture = recorder.endRecording();
-    _image = await picture.toImage(_scaledRect.width.toInt(), _scaledRect.height.toInt());
+    _image = await picture.toImage(
+      _scaledRect.width.toInt(),
+      _scaledRect.height.toInt(),
+    );
   }
 
   @override
   Body createBody() {
-    final startPosition = Vector2(50, 50);
-
-    final def =
-        BodyDef()
-          ..type = BodyType.dynamic
-          ..position = startPosition
-          ..gravityOverride = Vector2.zero();
-    final body =
-        world.createBody(def)
-          ..userData = this
-          ..angularDamping = 2.0
-          ..linearDamping = 0.2
-          ..linearVelocity = Vector2.zero()
-          ..angularVelocity = 0.0;
+    final def = BodyDef()
+      ..type = BodyType.dynamic
+      ..position = startingPoint
+      ..gravityOverride = Vector2.zero();
+    final body = world.createBody(def)
+      ..userData = this
+      ..angularDamping = 2.0
+      ..linearDamping = 0.2
+      ..linearVelocity = Vector2.zero()
+      ..angularVelocity = 0.0;
 
     final shape = PolygonShape()..set(vertices);
-    final fixtureDef =
-        FixtureDef(shape)
-          ..density = 0.15
-          ..restitution = 0.2;
+    final fixtureDef = FixtureDef(shape)
+      ..density = 0.15
+      ..restitution = 0.2;
 
     body.createFixture(fixtureDef);
 
@@ -99,10 +100,14 @@ class Ship extends BodyComponent<MainGame> {
 
   void _updateFlight(double dt) {
     if (pressedKeys.contains(LogicalKeyboardKey.arrowUp)) {
-      body.applyForce(body.worldVector(Vector2(0.0, -1.0))..scale(_linearSpeedDiff * dt));
+      body.applyForce(
+        body.worldVector(Vector2(0.0, -1.0))..scale(_linearSpeedDiff * dt),
+      );
     }
     if (pressedKeys.contains(LogicalKeyboardKey.arrowDown)) {
-      body.applyForce(body.worldVector(Vector2(0.0, 1.0))..scale(_linearSpeedDiff * dt));
+      body.applyForce(
+        body.worldVector(Vector2(0.0, 1.0))..scale(_linearSpeedDiff * dt),
+      );
     }
   }
 

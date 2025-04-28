@@ -37,6 +37,7 @@ class TerminalScene extends RectangleComponent
             position: game.size / 2,
             anchor: Anchor.center,
             width: game.size.x * 0.7,
+            enableAnimation: false,
             onPressed: () {},
           ),
         ],

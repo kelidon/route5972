@@ -35,27 +35,24 @@ class RacingScene extends RectangleComponent
   }
 
   Future<void> start() async {
+    final map = await TiledComponent.load('map.tmx', Vector2.all(32));
     isGameOver = false;
 
     pressedKeySet = {};
     activeKeyMap = controlKeys;
-    ship = Ship(pressedKeys: pressedKeySet, cameraComponent: game.camera);
 
     game.camera.viewfinder.zoom = playZoom;
     game.camera.viewfinder.anchor = Anchor.center;
 
-    game.world.add(ship);
-
-    final map = await TiledComponent.load('map.tmx', Vector2.all(32));
-
     game.world.add(map);
 
     addWalls(map);
-
+    addShip(map);
     await add(
-       BackButtonComponent(
-              onBack: () => fadeOut(
-                  () => game.router.pushReplacementNamed(MainGame.bar))),
+      BackButtonComponent(
+        onBack: () =>
+            fadeOut(() => game.router.pushReplacementNamed(MainGame.bar)),
+      ),
     );
   }
 
@@ -66,7 +63,8 @@ class RacingScene extends RectangleComponent
       if (obj.isPolyline || obj.isPolygon) {
         final points = obj.isPolyline ? obj.polyline : obj.polygon;
 
-        final absolutePoints = points.map((p) => Vector2(obj.x + p.x, obj.y + p.y)).toList();
+        final absolutePoints =
+            points.map((p) => Vector2(obj.x + p.x, obj.y + p.y)).toList();
 
         if (obj.isPolygon && absolutePoints.isNotEmpty) {
           absolutePoints.add(absolutePoints.first);
@@ -75,6 +73,22 @@ class RacingScene extends RectangleComponent
         game.world.add(Wall(absolutePoints));
       }
     }
+  }
+
+  void addShip(TiledComponent component) {
+    final objectGroup = component.tileMap.getLayer<ObjectGroup>('config');
+    Vector2? startingPoint;
+    for (final obj in objectGroup!.objects) {
+      if (obj.class_ == 'start' && obj.isPoint) {
+        startingPoint = obj.position;
+      }
+    }
+    ship = Ship(
+      pressedKeys: pressedKeySet,
+      cameraComponent: game.camera,
+      startingPoint: startingPoint ?? Vector2.zero(),
+    );
+    game.world.add(ship);
   }
 
   @override
