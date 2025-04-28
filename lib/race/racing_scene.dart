@@ -19,11 +19,10 @@ final Map<LogicalKeyboardKey, LogicalKeyboardKey> controlKeys = {
 
 class RacingScene extends RectangleComponent
     with HasGameReference<MainGame>, KeyboardHandler, SceneTransitionMixin {
-  static const double playZoom = 1;
+  static const double playZoom = 3;
   late Map<LogicalKeyboardKey, LogicalKeyboardKey> activeKeyMap;
   late Set<LogicalKeyboardKey> pressedKeySet;
-  final ships = <Ship>[];
-  Ship? winner;
+  late final Ship ship;
   double _timeCounter = 0;
   bool isGameOver = false;
 
@@ -38,7 +37,7 @@ class RacingScene extends RectangleComponent
 
     pressedKeySet = {};
     activeKeyMap = controlKeys;
-    final ship = Ship(pressedKeys: pressedKeySet, cameraComponent: game.camera);
+    ship = Ship(pressedKeys: pressedKeySet, cameraComponent: game.camera);
 
     game.camera.viewfinder.zoom = playZoom;
     game.camera.viewfinder.anchor = Anchor.center;
@@ -56,13 +55,14 @@ class RacingScene extends RectangleComponent
     final objectGroup = component.tileMap.getLayer<ObjectGroup>('walls');
 
     for (final obj in objectGroup!.objects) {
-      if (obj.isPolyline) {
-        final points = obj.polyline;
-        // Calculate absolute positions by adding object's position to each point
-        final absolutePoints = points.map((p) => Vector2(
-              obj.x + p.x,
-              obj.y + p.y,
-            )).toList();
+      if (obj.isPolyline || obj.isPolygon) {
+        final points = obj.isPolyline ? obj.polyline : obj.polygon;
+
+        final absolutePoints = points.map((p) => Vector2(obj.x + p.x, obj.y + p.y)).toList();
+
+        if (obj.isPolygon && absolutePoints.isNotEmpty) {
+          absolutePoints.add(absolutePoints.first);
+        }
 
         game.world.add(Wall(absolutePoints));
       }
@@ -104,9 +104,8 @@ class RacingScene extends RectangleComponent
     activeKeyMap.clear();
     _timeCounter = 0;
 
-    for (final ship in ships) {
-      ship.removeFromParent();
-    }
+    ship.removeFromParent();
+
     for (final camera in children.query<CameraComponent>()) {
       camera.removeFromParent();
     }
