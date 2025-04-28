@@ -86,6 +86,8 @@ class AudioService {
   Future<void> music(Music m) async {
     if (!enabled) return;
     if (cutMusic) return;
+    _currentVolume = 1;
+    FlameAudio.bgm.audioPlayer.setVolume(_currentVolume);
     await bgsm.audioPlayer.setSourceAsset(m.path);
     await bgsm.audioPlayer.setReleaseMode(ReleaseMode.release);
     bgsm.isPlaying = true;
