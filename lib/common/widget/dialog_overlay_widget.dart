@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:route5972/common/constant/ui_const.dart';
 import 'package:route5972/common/widget/dialog_content.dart';
@@ -58,20 +57,22 @@ class _DialogOverlayWidgetState extends State<DialogOverlayWidget> {
           ),
         );
       },
-      child: showing
-          ? Stack(
-              children: [
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: DialogContent(
-                    text: widget.text,
-                    options: widget.options,
+      child:
+          showing
+              ? Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: DialogContent(text: widget.text, options: widget.options),
                   ),
-                ),
-                Align(alignment: Alignment.bottomLeft, child: NPCImage()),
-              ],
-            )
-          : const SizedBox.shrink(),
+                  if (widget.leftImage != null)
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: NPCImage(imagePath: widget.leftImage!),
+                    ),
+                ],
+              )
+              : const SizedBox.shrink(),
     );
   }
 }

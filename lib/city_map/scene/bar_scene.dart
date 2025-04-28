@@ -20,7 +20,7 @@ class BarScene extends RectangleComponent
 
           InteractiveItem(
             position: Vector2(game.size.x*0.8, game.size.y*0.5),
-            size: Vector2.all(48),
+            size: Vector2.all(88),
             name: 'Bartender',
             image: 'npc2.png',
             onTap: () async {
@@ -35,7 +35,7 @@ class BarScene extends RectangleComponent
           ),
           InteractiveItem(
             position: Vector2(game.size.x*0.2, game.size.y*0.7),
-            size: Vector2.all(48),
+            size: Vector2.all(88),
             name: 'Taria',
             image: 'npc1.png',
             onTap: () async {
