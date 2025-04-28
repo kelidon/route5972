@@ -17,37 +17,45 @@ class DialogStreamWidget extends StatelessWidget {
         if (snapshot.hasData) {
           return DialogOverlayWidget(
             text: snapshot.data!.text,
-            options:
-                snapshot.data!.options
-                    .map(
-                      (e) => (
-                        text: e.text,
-                        onSelect: () {
-                          // todo find next node and show
-                          if (e.nextNode.type == 'race' ||
-                              e.nextNode.type == 'location') {
-                            game.hideDialog();
-                            game.router.pushReplacementNamed(switch (e
-                                .nextNode
-                                .id) {
-                              'loc1' => MainGame.bar,
-                              'loc2' => MainGame.techPit,
-                              'loc3' => MainGame.terminal,
-                              _ => MainGame.map,
-                            });
-                            return;
-                          }
-                          if (e.nextNode.type == 'dialog') {
-                            final nextDialog = game.plotService.getDialog(
-                              e.nextNode.id,
-                            );
-                            if (nextDialog == null) return;
-                            game.showDialog(nextDialog);
-                          }
-                        },
-                      ),
-                    )
-                    .toList(),
+            options: snapshot.data!.options
+                .map(
+                  (e) => (
+                    text: e.text,
+                    onSelect: () {
+                      // todo find next node and show
+                      if (e.nextNode.type == 'location') {
+                        game.hideDialog();
+                        game.router
+                            .pushReplacementNamed(switch (e.nextNode.id) {
+                          'loc1' => MainGame.bar,
+                          'loc2' => MainGame.techPit,
+                          'loc3' => MainGame.terminal,
+                          _ => MainGame.map,
+                        });
+                        return;
+                      }
+                      if (e.nextNode.type == 'race') {
+                        game.hideDialog();
+                        game.router
+                            .pushReplacementNamed(switch (e.nextNode.id) {
+                          'loc1' => MainGame.bar,
+                          'loc2' => MainGame.techPit,
+                          'loc3' => MainGame.terminal,
+                          _ => MainGame.map,
+                        });
+                        return;
+                      }
+                      if (e.nextNode.type == 'dialog') {
+                        final nextDialog = game.plotService.getDialog(
+                          e.nextNode.id,
+                        );
+                        if (nextDialog == null) return;
+                        game.showDialog(nextDialog);
+                      }
+                    },
+                  ),
+                )
+                .toList(),
             leftImage: game.plotService.getNPC(snapshot.data!.npc)?.image,
             rightImage: null,
           );
