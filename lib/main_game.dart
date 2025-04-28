@@ -31,7 +31,7 @@ class MainGame extends Forge2DGame with TapDetector, HasKeyboardHandlerComponent
     debugMode = true;
 
     router = RouterComponent(
-      initialRoute: map,
+      initialRoute: race,
       routes: {
         map: Route(CityMapScene.new, maintainState: false),
         bar: Route(BarScene.new, maintainState: false),

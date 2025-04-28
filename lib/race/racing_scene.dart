@@ -44,6 +44,15 @@ class RacingScene extends RectangleComponent
     game.camera.viewfinder.zoom = playZoom;
     game.camera.viewfinder.anchor = Anchor.center;
 
+    // Add background
+    final background = await game.loadSprite('race1.png');
+    final backgroundComponent = SpriteComponent(
+      sprite: background,
+      size: Vector2(map.tileMap.map.width * 32, map.tileMap.map.height * 32),
+      priority: -1,
+    );
+    game.world.add(backgroundComponent);
+
     game.world.add(map);
 
     addWalls(map);
