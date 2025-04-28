@@ -20,7 +20,6 @@ class BarScene extends RectangleComponent
       InteractiveMap(
         backgroundImage: 'bar.png',
         interactiveItems: [
-
           InteractiveItem(
             position: Vector2(game.size.x*0.7, game.size.y*0.48),
             size: Vector2.all(88),
@@ -51,8 +50,8 @@ class BarScene extends RectangleComponent
             },
           ),
           BackButtonComponent(
-            onBack: () => fadeOut(() {
-              audio.fadeOutCurrent();
+            onBack: () => fadeOut(() async {
+              await audio.fadeOutCurrent();
               game.router.pushReplacementNamed(MainGame.map);
             }),
           ),
