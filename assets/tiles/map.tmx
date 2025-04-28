@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="2">
+ <imagelayer id="2" name="bg" offsetx="0" offsety="0">
+  <image source="../images/background.png" width="2000" height="1157"/>
+ </imagelayer>
+ <objectgroup id="3" name="walls">
+  <object id="1" x="108" y="128">
+   <polyline points="0,0 120,0 316,0 560,12 800,48 1020,104 1116,172 1204,332 1248,492 1136,644 812,724 436,740 248,600 120,324 300,160 648,156 860,268 768,448 596,416 516,360 496,316 536,280 576,284 608,296 620,324"/>
+  </object>
+ </objectgroup>
+</map>

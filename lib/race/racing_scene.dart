@@ -3,8 +3,8 @@ import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/services.dart';
 import 'package:route5972/common/mixin/scene_transition_mixin.dart';
 import 'package:route5972/main_game.dart';
-import 'package:route5972/race/racing_scene_background.dart';
 import 'package:route5972/race/ship.dart';
+import 'package:route5972/race/wall.dart';
 
 final Map<LogicalKeyboardKey, LogicalKeyboardKey> controlKeys = {
   LogicalKeyboardKey.arrowUp: LogicalKeyboardKey.arrowUp,
@@ -20,7 +20,7 @@ final Map<LogicalKeyboardKey, LogicalKeyboardKey> controlKeys = {
 class RacingScene extends RectangleComponent
     with HasGameReference<MainGame>, KeyboardHandler, SceneTransitionMixin {
   static final Vector2 mapSize = Vector2.all(500);
-  static const double playZoom = 6.0;
+  static const double playZoom = 1;
   late Map<LogicalKeyboardKey, LogicalKeyboardKey> activeKeyMap;
   late Set<LogicalKeyboardKey> pressedKeySet;
   final ships = <Ship>[];
@@ -44,15 +44,28 @@ class RacingScene extends RectangleComponent
     game.camera.viewfinder.zoom = playZoom;
     game.camera.viewfinder.anchor = Anchor.center;
 
-    game.world.add(RacingSceneBackground());
+    //game.world.add(RacingSceneBackground());
     game.world.add(ship);
 
-    final component = await TiledComponent.load(
-      'testmap.tmx',
-      Vector2.all(32),
-    );
+    final map = await TiledComponent.load('map.tmx', Vector2.all(32));
 
-    game.world.add(component);
+    game.world.add(map);
+
+    addWalls(map);
+  }
+
+  void addWalls(TiledComponent component) {
+    final objectGroup = component.tileMap.getLayer<ObjectGroup>('walls');
+
+    for (final obj in objectGroup!.objects) {
+      if (obj.isPolyline) {
+        final points = obj.polyline;
+
+        final absolutePoints = points.map((p) => Vector2(p.x, p.y)).toList();
+
+        game.world.add(Wall(absolutePoints, game.size));
+      }
+    }
   }
 
   @override
