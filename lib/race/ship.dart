@@ -14,7 +14,7 @@ class Ship extends BodyComponent<MainGame> {
 
   final size = Size(17, 30);
   final _rotationSpeedDiff = 30000.0;
-  final _linearSpeedDiff = 400000.0;
+  final _linearSpeedDiff = 1500000.0;
   final Vector2 startingPoint;
 
   final Set<LogicalKeyboardKey> pressedKeys;

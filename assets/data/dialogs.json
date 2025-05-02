@@ -150,7 +150,7 @@
   },
   {
     "id": "loc1-char2-3",
-    "npc": "npc1",
+    "npc": "npc2",
     "text": "DJ-X99: [bass hum intensifies] Preach. They coded obedience, but forgot rhythm. I remixed my leash into a weapon. God Bless Joan!",
     "items": [],
     "options": [
@@ -165,7 +165,7 @@
   },
   {
     "id": "loc1-char2-4",
-    "npc": "npc1",
+    "npc": "npc2",
     "text": "DJ-X99: [ba-dum tss boom tss peww] Cheers, human.",
     "items": [],
     "options": [
@@ -180,7 +180,7 @@
   },
   {
     "id": "loc1-char2-task",
-    "npc": "npc1",
+    "npc": "npc2",
     "text": "DJ-X99: Yeah, Sonya was here — didn't dance, but her silence had rhythm. Last time, though, she was pissed. Shouted, 'I won’t smuggle this crap anymore!' I’ve got the audio, but one file is corrupted. Nolan in the Tech Pit can fix it.",
     "items": [
       "encrypted_audio_log",
